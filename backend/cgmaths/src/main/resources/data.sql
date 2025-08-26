@@ -22,44 +22,52 @@ INSERT INTO rarity_ref (id, name) VALUES (2, "Rare");
 INSERT INTO rarity_ref (id, name) VALUES (3, "Super Rare");
 INSERT INTO rarity_ref (id, name) VALUES (4, "Ultra Rare");
 
-INSERT INTO card (image_url, energy, cost, type_id, rarity_id, symbol_code, category_id, collection_id)
-VALUES ("/assets/card1.png", 1, 5, 1, 1, '+', 1, 1);
+INSERT INTO card (code, image_url, energy, cost, type_id, rarity_id, symbol_code, category_id, collection_id)
+VALUES
+  ('CARD-1', '/assets/card-1.png', 1, 5, 1, 1, '+', 1, 1),
+  ('CARD-2', '/assets/card-2.png', 1, 5, 1, 1, '+', 1, 1),
+  ('CARD-3', '/assets/card-3.png', 1, 10, 1, 1, '+', 1, 1),
+  ('CARD-4', '/assets/card-4.png', 2, 15, 1, 1, '+', 1, 1);
 
-INSERT INTO card (image_url, energy, cost, type_id, rarity_id, symbol_code, category_id, collection_id)
-VALUES ("/assets/card2.png", 1, 5, 1, 1, '+', 1, 1);
-
-INSERT INTO card (image_url, energy, cost, type_id, rarity_id, symbol_code, category_id, collection_id)
-VALUES ("/assets/card3.png", 1, 10, 1, 1, '+', 1, 1);
-
-INSERT INTO card (image_url, energy, cost, type_id, rarity_id, symbol_code, category_id, collection_id)
-VALUES ("/assets/card4.png", 2, 15, 1, 1, '+', 1, 1);
-
+-- Référencer par code (pas besoin de connaître l’ID)
+-- CARD 1
 INSERT INTO card_name_i18n (card_id, lang, name)
-VALUES (1, 'fr', 'Chiffre 1'), (1, 'en', 'Number 1');
-
+SELECT c.id, 'fr', 'Chiffre 1' FROM card c WHERE c.code = 'CARD-1';
 INSERT INTO card_name_i18n (card_id, lang, name)
-VALUES (2, 'fr', 'Chiffre 2'), (2, 'en', 'Number 2');
-
-INSERT INTO card_name_i18n (card_id, lang, name)
-VALUES (3, 'fr', 'Chiffre 3'), (3, 'en', 'Number 3');
-
-INSERT INTO card_name_i18n (card_id, lang, name)
-VALUES (4, 'fr', 'Chiffre 4'), (4, 'en', 'Number 4');
-
-INSERT INTO card_name_i18n (card_id, lang, name)
-VALUES (5, 'fr', 'Addition +'), (5, 'en', 'Add +');
+SELECT c.id, 'en', 'Number 1' FROM card c WHERE c.code = 'CARD-1';
 
 INSERT INTO card_rule_i18n (card_id, lang, rule)
-VALUES (1, 'fr', 'Energie 1'), (1, 'en', 'Number 1');
+SELECT c.id, 'fr', '-' FROM card c WHERE c.code = 'CARD-1';
+INSERT INTO card_rule_i18n (card_id, lang, rule)
+SELECT c.id, 'en', '-'   FROM card c WHERE c.code = 'CARD-1';
+-- CARD 2
+INSERT INTO card_name_i18n (card_id, lang, name)
+SELECT c.id, 'fr', 'Chiffre 2' FROM card c WHERE c.code = 'CARD-2';
+INSERT INTO card_name_i18n (card_id, lang, name)
+SELECT c.id, 'en', 'Number 2' FROM card c WHERE c.code = 'CARD-2';
 
 INSERT INTO card_rule_i18n (card_id, lang, rule)
-VALUES (2, 'fr', 'Energie 2'), (2, 'en', 'Number 2');
+SELECT c.id, 'fr', '-' FROM card c WHERE c.code = 'CARD-2';
+INSERT INTO card_rule_i18n (card_id, lang, rule)
+SELECT c.id, 'en', '-'   FROM card c WHERE c.code = 'CARD-2';
+-- CARD 3
+INSERT INTO card_name_i18n (card_id, lang, name)
+SELECT c.id, 'fr', 'Chiffre 3' FROM card c WHERE c.code = 'CARD-3';
+INSERT INTO card_name_i18n (card_id, lang, name)
+SELECT c.id, 'en', 'Number 3' FROM card c WHERE c.code = 'CARD-3';
 
 INSERT INTO card_rule_i18n (card_id, lang, rule)
-VALUES (3, 'fr', 'Energie 3'), (3, 'en', 'Number 3');
+SELECT c.id, 'fr', '-' FROM card c WHERE c.code = 'CARD-3';
+INSERT INTO card_rule_i18n (card_id, lang, rule)
+SELECT c.id, 'en', '-'   FROM card c WHERE c.code = 'CARD-3';
+-- CARD 4
+INSERT INTO card_name_i18n (card_id, lang, name)
+SELECT c.id, 'fr', 'Chiffre 4' FROM card c WHERE c.code = 'CARD-4';
+INSERT INTO card_name_i18n (card_id, lang, name)
+SELECT c.id, 'en', 'Number 4' FROM card c WHERE c.code = 'CARD-4';
 
 INSERT INTO card_rule_i18n (card_id, lang, rule)
-VALUES (4, 'fr', 'Energie 4'), (4, 'en', 'Number 4');
-
+SELECT c.id, 'fr', '-' FROM card c WHERE c.code = 'CARD-4';
 INSERT INTO card_rule_i18n (card_id, lang, rule)
-VALUES (5, 'fr', 'Ajoute 2 energies'), (5, 'en', 'Add +');
+SELECT c.id, 'en', '-'   FROM card c WHERE c.code = 'CARD-4';
+
