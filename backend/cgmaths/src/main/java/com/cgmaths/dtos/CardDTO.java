@@ -1,0 +1,33 @@
+package com.cgmaths.dtos;
+
+import com.cgmaths.model.Card;
+
+public record CardDTO(
+        Integer id,
+        String code,
+        String image_url,
+        Integer energy,
+        Integer cost,
+        String type,
+        String rarity,
+        String symbol,
+        String category,
+        String collection
+
+) {
+
+    public static CardDTO from(Card c) {
+        return new CardDTO(
+                c.getId(),
+                c.getCode(),
+                c.getImage_url(),
+                c.getEnergy(),
+                c.getCost(),
+                c.getType().getName(),
+                c.getRarity().getName(),
+                c.getSymbol().getCode(),
+                c.getCollection().getName(),
+                c.getCategory().getName()
+        );
+    }
+}
