@@ -2,7 +2,6 @@ package com.cgmaths.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "category_ref")
@@ -14,4 +13,7 @@ public class CardCategory {
 
     @Column(length = 32, nullable = false, unique = true)
     private String name;
+
+    protected CardCategory() {}
+    // getters/setters
 }
