@@ -16,6 +16,7 @@ public class CardService {
 
     private final CardRepository cardRepository;
 
+
     @Transactional
     public CardDTO getCard(Integer id) {
         // Choisis la méthode avec fetch (ou @EntityGraph) si tu as besoin des refs
@@ -27,7 +28,10 @@ public class CardService {
     }
 
     @Transactional
-    public List<Card> getAllCards() {
-        return cardRepository.findAll();
+    public List<CardDTO> getAllCards() {
+        var cards = cardRepository.findAllWithRefs(); // Récupère toutes les cartes
+        return cards.stream()
+                .map(c -> CardDTO.from(c)
+                ).toList();
     }
 }

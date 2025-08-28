@@ -12,7 +12,9 @@ public record CardDTO(
         String rarity,
         String symbol,
         String category,
-        String collection
+        String collection,
+        String name_fr,
+        String rule_fr
 
 ) {
 
@@ -26,8 +28,10 @@ public record CardDTO(
                 c.getType().getName(),
                 c.getRarity().getName(),
                 c.getSymbol().getCode(),
+                c.getCategory().getName(),
                 c.getCollection().getName(),
-                c.getCategory().getName()
+                c.getName_fr(),
+                c.getRule_fr()
         );
     }
 }

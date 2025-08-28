@@ -19,7 +19,7 @@ public class CardController {
     CardService cardService;
 
     @GetMapping("/cards")
-    public List<Card> getAllCards() {
+    public List<CardDTO> getAllCards() {
         return cardService.getAllCards();
     }
 

@@ -30,6 +30,8 @@ CREATE TABLE IF NOT EXISTS card (
   image_url     VARCHAR(200) NOT NULL,
   energy        INT NOT NULL,
   cost          INT NOT NULL,
+  name_fr       VARCHAR(100) NOT NULL,
+  rule_fr       VARCHAR(200) NOT NULL,
 
   type_id       INT NOT NULL,
   rarity_id     INT NOT NULL,
@@ -50,27 +52,6 @@ CREATE TABLE IF NOT EXISTS card (
   INDEX idx_card_collection (collection_id)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS card_name_i18n (
-  card_id INT NOT NULL,
-  lang    CHAR(2) NOT NULL,         -- 'fr', 'en', ...
-  name    VARCHAR(100) NOT NULL,
-  PRIMARY KEY (card_id, lang),
-  CONSTRAINT fk_name_card
-    FOREIGN KEY (card_id) REFERENCES card(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS card_rule_i18n (
-  card_id INT NOT NULL,
-  lang    CHAR(2) NOT NULL,
-  rule    VARCHAR(200) NOT NULL,
-  PRIMARY KEY (card_id, lang),
-  CONSTRAINT fk_rule_card
-    FOREIGN KEY (card_id) REFERENCES card(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE INDEX idx_card_name_lang ON card_name_i18n (lang, name);
-
 
 
 CREATE TABLE IF NOT EXISTS user (

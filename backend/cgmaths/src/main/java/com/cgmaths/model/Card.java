@@ -20,6 +20,12 @@ public class Card {
     @Column(name = "image_url", length = 200, nullable = false)
     private String image_url;
 
+    @Column(name = "name_fr", length = 100, nullable = false)
+    private String name_fr;
+
+    @Column(name = "rule_fr", length = 200, nullable = false)
+    private String rule_fr;
+
     @Column(name = "energy", nullable = false)
     @NotBlank
     private Integer energy;
