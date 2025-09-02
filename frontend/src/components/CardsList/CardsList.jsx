@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function CardsList() {
   const [dataCards, setDataCards] = useState([]);
@@ -14,7 +15,8 @@ function CardsList() {
         return res.json();
       })
       .then((data) => {
-        setDataCards(data);
+        const sortedData = data.sort((a, b) => a.id - b.id);
+        setDataCards(sortedData);
         setLoading(false);
       })
       .catch((error) => {
@@ -27,20 +29,24 @@ function CardsList() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
+    <div className="cardslist-container">
       {dataCards &&
         dataCards.map((card, idx) => (
-         <div key={idx}>
-            <p>URL: {card.image_url}</p>
-            <img
-               src={`http://localhost:8080${card.image_url}`}
-              alt={card.name || `Card ${idx}`}
-              onError={(e) => {
-                console.error('Image failed to load:', card.image_url);
-                e.target.style.border = '2px solid red';
-              }}
-              onLoad={() => console.log('Image loaded:', card.image_url)}
-            />
+          <div key={idx} className="cardslist-card">
+            <p>
+              URL: {card.image_url} /ID: {card.id}
+            </p>
+            <Link to={`/cards/${card.id}`}>
+              <img
+                src={`http://localhost:8080${card.image_url}`}
+                alt={card.name || `Card ${idx}`}
+                onError={(e) => {
+                  console.error("Image failed to load:", card.image_url);
+                  e.target.style.border = "2px solid red";
+                }}
+                onLoad={() => console.log("Image loaded:", card.image_url)}
+              />
+            </Link>
           </div>
         ))}
     </div>

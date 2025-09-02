@@ -9,12 +9,12 @@ public record CardDTO(
         Integer energy,
         Integer cost,
         String type,
-        String rarity,
+        Integer difficulty,
         String symbol,
         String category,
         String collection,
         String name_fr,
-        String rule_fr
+        String rule
 
 ) {
 
@@ -26,12 +26,12 @@ public record CardDTO(
                 c.getEnergy(),
                 c.getCost(),
                 c.getType().getName(),
-                c.getRarity().getName(),
+                c.getDifficulty().getPower(),
                 c.getSymbol().getCode(),
                 c.getCategory().getName(),
                 c.getCollection().getName(),
                 c.getName_fr(),
-                c.getRule_fr()
+                c.getRule().getName()
         );
     }
 }

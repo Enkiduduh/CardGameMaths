@@ -1,12 +1,10 @@
 
 CREATE TABLE IF NOT EXISTS card_type (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL UNIQUE  -- Action, Joker, Boss, Hero
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-CREATE TABLE IF NOT EXISTS symbol_ref (
-  code CHAR(1) PRIMARY KEY, -- "+", "-", "*", "/"
-  label VARCHAR(32) NOT NULL
+  name VARCHAR(100) NOT NULL UNIQUE,  -- Action, Joker, Boss, Hero
+  attribut VARCHAR(32) UNIQUE, -- +, -, *, /
+  boost VARCHAR(32) NOT NULL UNIQUE, -- bonus, malus, optionnal
+  multiplicator INT NOT NULL UNIQUE -- 1, 2, 3
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS category_ref (
@@ -19,9 +17,14 @@ CREATE TABLE IF NOT EXISTS collection_ref (
   name VARCHAR(32) NOT NULL UNIQUE  -- "collection_1", "collection_2", etc
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS rarity_ref (
+CREATE TABLE IF NOT EXISTS difficulty_ref (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(100) NOT NULL UNIQUE -- Commune, Rare, Super Rare, Ultra Rare
+  power INT NOT NULL UNIQUE -- 1, 2, 3, 4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS rule_ref (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(300) NOT NULL UNIQUE -- "rule1", "rule2", "rule3", "rule4",etc...
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS card (
@@ -31,25 +34,25 @@ CREATE TABLE IF NOT EXISTS card (
   energy        INT NOT NULL,
   cost          INT NOT NULL,
   name_fr       VARCHAR(100) NOT NULL,
-  rule_fr       VARCHAR(200) NOT NULL,
 
   type_id       INT NOT NULL,
-  rarity_id     INT NOT NULL,
-  symbol_code   CHAR(1) NOT NULL,
+  difficulty_id INT NOT NULL,
   category_id   INT NOT NULL,
   collection_id INT NOT NULL,
+  rule_id       INT NOT NULL,
 
   CONSTRAINT fk_card_type       FOREIGN KEY (type_id)       REFERENCES card_type(id),
-  CONSTRAINT fk_card_rarity     FOREIGN KEY (rarity_id)     REFERENCES rarity_ref(id),
-  CONSTRAINT fk_card_symbol     FOREIGN KEY (symbol_code)   REFERENCES symbol_ref(code),
+  CONSTRAINT fk_card_difficulty FOREIGN KEY (difficulty_id) REFERENCES difficulty_ref(id),
   CONSTRAINT fk_card_category   FOREIGN KEY (category_id)   REFERENCES category_ref(id),
   CONSTRAINT fk_card_collection FOREIGN KEY (collection_id) REFERENCES collection_ref(id),
+  CONSTRAINT fk_card_rule       FOREIGN KEY (rule_id)       REFERENCES rule_ref(id),
 
   INDEX idx_card_type       (type_id),
-  INDEX idx_card_rarity     (rarity_id),
+  INDEX idx_card_difficulty (difficulty_id),
   INDEX idx_card_symbol     (symbol_code),
   INDEX idx_card_category   (category_id),
-  INDEX idx_card_collection (collection_id)
+  INDEX idx_card_collection (collection_id),
+  INDEX idx_card_rule       (rule_id)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

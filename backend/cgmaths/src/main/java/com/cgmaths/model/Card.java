@@ -39,15 +39,8 @@ public class Card {
     private CardType type;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "rarity_id", nullable = false) // FK -> rarity_ref(id)
-    private Rarity rarity;
-
-    // PK = CHAR(1) sur symbol_ref.code
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "symbol_code",                 // FK en table card
-            referencedColumnName = "code",        // PK en table symbol_ref
-            nullable = false)
-    private SymbolRef symbol;
+    @JoinColumn(name = "difficulty_id", nullable = false) // FK -> difficulty_ref(id)
+    private Difficulty difficulty;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false) // FK -> category_ref(id)
@@ -57,5 +50,8 @@ public class Card {
     @JoinColumn(name = "collection_id", nullable = false) // FK -> collection_ref(id)
     private CardCollection collection;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "rule_id", nullable = false) // FK -> rule_ref(id)
+    private CardRule rule;
 
 }

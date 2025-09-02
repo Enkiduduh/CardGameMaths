@@ -1,1 +1,1 @@
-{"version":3,"sources":["../components/Dice/_dice.scss","App.css"],"names":[],"mappings":"AAAA;EACE,WAAA;EACA,YAAA;EACA,uBAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;ACCF","file":"App.css"}
+{"version":3,"sources":["../components/Dice/_dice.scss","App.css","../components/CardsList/_cardsList.scss"],"names":[],"mappings":"AAAA;EACE,WAAA;EACA,YAAA;EACA,uBAAA;EACA,aAAA;EACA,uBAAA;EACA,mBAAA;ACCF;;ACPA;EACE,aAAA;EACA,qCAAA;ADUF;;ACNA;EACE,WAAA;ADSF","file":"App.css"}

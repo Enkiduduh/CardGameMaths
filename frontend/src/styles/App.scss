@@ -1,3 +1,8 @@
-@use "../components/CardsList/cardsList";
+//Pages
 @use "../pages/CardsCollection/cardsCollection";
+@use "../pages/CardDisplay/cardDisplay";
+@use "../pages/Menu/menu";
+//Components
 @use "../components/Dice/dice";
+@use "../components/Playfield/playfield";
+@use "../components/CardsList/cardsList";
