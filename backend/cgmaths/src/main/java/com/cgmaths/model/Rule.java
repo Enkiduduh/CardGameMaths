@@ -7,14 +7,13 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "difficulty_ref")
-public class Difficulty {
+@Table(name = "rule_ref")
+public class Rule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "power", nullable = false, unique = true)
+    @Column(name = "name", length = 300, nullable = false, unique = true)
     @NotBlank
-    @Size(max = 1)
-    private Integer power;
+    private String name;
 }

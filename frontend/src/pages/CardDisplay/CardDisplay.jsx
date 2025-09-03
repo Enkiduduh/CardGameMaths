@@ -36,6 +36,9 @@ function CardDisplay() {
           <p>
             URL: {dataCard.image_url} /ID: {dataCard.id}
           </p>
+           <p>
+            {dataCard.type} /ID: {dataCard.id}
+          </p>
 
           <img
             src={`http://localhost:8080${dataCard.image_url}`}

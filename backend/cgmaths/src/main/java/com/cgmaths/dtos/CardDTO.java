@@ -1,21 +1,20 @@
 package com.cgmaths.dtos;
 
 import com.cgmaths.model.Card;
+import com.cgmaths.model.CardType;
 
 public record CardDTO(
         Integer id,
         String code,
         String image_url,
-        Integer energy,
+        String name,
         Integer cost,
-        String type,
-        Integer difficulty,
-        String symbol,
-        String category,
-        String collection,
-        String name_fr,
-        String rule
-
+        Integer multiplicator,
+        String card_type,
+        String rule,
+        String attribute,
+        String boost,
+        String collection
 ) {
 
     public static CardDTO from(Card c) {
@@ -23,15 +22,14 @@ public record CardDTO(
                 c.getId(),
                 c.getCode(),
                 c.getImage_url(),
-                c.getEnergy(),
-                c.getCost(),
-                c.getType().getName(),
-                c.getDifficulty().getPower(),
-                c.getSymbol().getCode(),
-                c.getCategory().getName(),
-                c.getCollection().getName(),
                 c.getName_fr(),
-                c.getRule().getName()
+                c.getCost(),
+                c.getMultiplicator(),
+                c.getType().getName(),
+                c.getRule().getName(),
+                c.getAttribute().getName(),
+                c.getBoost().getName(),
+                c.getCollection().getName()
         );
     }
 }

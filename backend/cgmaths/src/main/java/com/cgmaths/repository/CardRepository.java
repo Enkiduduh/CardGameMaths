@@ -14,15 +14,15 @@ import java.util.Optional;
 @Repository
 public interface CardRepository extends JpaRepository<Card, Integer> {
     // charge les refs uniquement pour cette requête
-    @EntityGraph(attributePaths = {"type", "symbol", "category", "collection", "difficulty"})
+    @EntityGraph(attributePaths = {"type", "attribute", "rule", "boost", "collection"})
     Optional<Card> findById(Integer id);
 
-    @EntityGraph(attributePaths = {"type", "symbol", "category", "collection", "difficulty"})
+    @EntityGraph(attributePaths = {"type", "attribute", "rule", "boost", "collection"})
     @Query("select c from Card c")
     List<Card> findAllWithRefs();
 
     // ou, une liste paginée avec prefetch :
-    @EntityGraph(attributePaths = {"type", "symbol", "category", "collection", "difficulty"})
+    @EntityGraph(attributePaths = {"type", "attribute", "rule", "boost", "collection"})
     Page<Card> findAll(Pageable pageable);
 
 }

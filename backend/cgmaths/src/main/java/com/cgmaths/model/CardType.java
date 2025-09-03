@@ -13,20 +13,8 @@ public class CardType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", length = 100, nullable = false, unique = true)
+    @Column(name = "name", length = 16, nullable = false, unique = true)
     @NotBlank
     private String name;
-
-    @Column(name = "attribut", length = 32, unique = true)
-    @NotBlank
-    private String attribut;
-
-    @Column(name = "boost", length = 16, nullable = false, unique = true)
-    @NotBlank
-    private String boost;
-
-    @Column(name = "multiplicator", nullable = false, unique = true)
-    @Size(max = 1)
-    private String multiplicator;
 
 }
