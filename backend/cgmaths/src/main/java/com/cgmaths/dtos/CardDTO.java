@@ -18,6 +18,9 @@ public record CardDTO(
 ) {
 
     public static CardDTO from(Card c) {
+        String renderedRule = c.getRule().getName()
+                .replace("{multiplicator}", String.valueOf(c.getMultiplicator()));
+
         return new CardDTO(
                 c.getId(),
                 c.getCode(),
@@ -26,7 +29,7 @@ public record CardDTO(
                 c.getCost(),
                 c.getMultiplicator(),
                 c.getType().getName(),
-                c.getRule().getName(),
+                renderedRule,
                 c.getAttribute().getName(),
                 c.getBoost().getName(),
                 c.getCollection().getName()

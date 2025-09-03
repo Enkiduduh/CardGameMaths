@@ -1,3 +1,27 @@
+.cardslist-card-container {
+  display: flex;
+  align-items: center;
+}
+
+.cardslist-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardslist-card-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  border: 1px solid white;
+  padding: 10px 5px;
+  margin: 2px 0;
+}
+
+.cardslist-card-img {
+  height: 244px;
+}
+
 .dice-container {
   width: 50px;
   height: 50px;

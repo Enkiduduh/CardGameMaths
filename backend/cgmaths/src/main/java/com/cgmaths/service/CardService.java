@@ -23,6 +23,9 @@ public class CardService {
         Card c = cardRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Card " + id));
 
+        String tpl = c.getRule().getName(); // ex: "... {multiplicator} ..."
+        String renderedRule = tpl.replace("{multiplicator}", String.valueOf(c.getMultiplicator()));
+
         // Ici on est dans la transaction, les proxys LAZY peuvent s'initialiser
         return CardDTO.from(c);
     }
