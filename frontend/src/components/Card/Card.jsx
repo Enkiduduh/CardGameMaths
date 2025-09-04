@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Card() {
+function Card(image_url) {
   return (
-    <div>Card</div>
+    <div className="card-container"
+      style={{backgroundImage:image_url}}
+    >
+
+    </div>
   )
 }
 

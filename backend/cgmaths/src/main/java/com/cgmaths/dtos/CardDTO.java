@@ -1,7 +1,10 @@
 package com.cgmaths.dtos;
 
 import com.cgmaths.model.Card;
-import com.cgmaths.model.CardType;
+
+import java.text.MessageFormat;
+import java.util.Locale;
+import java.util.Map;
 
 public record CardDTO(
         Integer id,
@@ -18,8 +21,8 @@ public record CardDTO(
 ) {
 
     public static CardDTO from(Card c) {
-        String renderedRule = c.getRule().getName()
-                .replace("{multiplicator}", String.valueOf(c.getMultiplicator()));
+        String tpl = c.getRule().getName();
+        String renderedRule = MessageFormat.format(tpl, c.getMultiplicator());
 
         return new CardDTO(
                 c.getId(),

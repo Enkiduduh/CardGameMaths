@@ -34,9 +34,11 @@ function CardDisplay() {
     <div className="cardslist-container">
       {dataCard && (
         <div className="cardslist-card-container">
-          <div className="cardslist-card">
+          <div className="cardslist-card"
+           style={{ backgroundImage: `url(http://localhost:8080${dataCard.image_url})` }}
+          >
             <div className="cardslist-card-line">
-              <span>Nom: {dataCard.name}</span>
+              <span className="cardslist-card-element-name">{dataCard.name}</span>
               <span>ID: {dataCard.id}</span>
               <span>Type: {dataCard.card_type}</span>
             </div>
@@ -52,7 +54,7 @@ function CardDisplay() {
               <span>Coût en boutique : {dataCard.cost} gold</span>
             </div>
           </div>
-          <img
+          {/* <img
             className="cardslist-card-img"
             src={`http://localhost:8080${dataCard.image_url}`}
             alt={dataCard.name}
@@ -61,7 +63,7 @@ function CardDisplay() {
               e.target.style.border = "2px solid red";
             }}
             onLoad={() => console.log("Image loaded:", dataCard.image_url)}
-          />
+          /> */}
         </div>
       )}
     </div>

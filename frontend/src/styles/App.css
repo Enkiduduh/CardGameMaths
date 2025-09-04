@@ -6,6 +6,13 @@
 .cardslist-card {
   display: flex;
   flex-direction: column;
+  width: 350px;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
 }
 
 .cardslist-card-line {
@@ -13,13 +20,24 @@
   align-items: center;
   justify-content: space-between;
   width: 350px;
-  border: 1px solid white;
   padding: 10px 5px;
   margin: 2px 0;
+  position: absolute;
+  z-index: 5;
+}
+
+.cardslist-card-element-name {
+  position: absolute;
+  z-index: 10;
+  color: red;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: lighter;
 }
 
 .cardslist-card-img {
-  height: 244px;
+  height: 500px;
 }
 
 .dice-container {
