@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import Card from "../../components/Card/Card";
 function Menu() {
   return (
     <div>
@@ -9,6 +9,8 @@ function Menu() {
       <Link to="/cards/collection">
         <div>Collection</div>
       </Link>
+      <Card/>
+      <Card/>
     </div>
   );
 }

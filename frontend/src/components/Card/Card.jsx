@@ -1,13 +1,13 @@
-import React from 'react'
+import { useState, useEffect } from "react";
 
-function Card(image_url) {
-  return (
-    <div className="card-container"
-      style={{backgroundImage:image_url}}
-    >
+function Card() {
+  const [randomNb, setRandomNb] = useState(0);
 
-    </div>
-  )
+  useEffect(() => {
+    setRandomNb(Math.floor(Math.random() * 50));
+  }, [])
+
+  return <div className="card-container">{randomNb}</div>;
 }
 
-export default Card
+export default Card;

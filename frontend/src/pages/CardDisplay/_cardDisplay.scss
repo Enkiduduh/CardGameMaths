@@ -1,18 +1,21 @@
 .cardslist-card-container {
   display: flex;
   align-items: center;
+  
 }
 
 .cardslist-card {
   display: flex;
   flex-direction: column;
-  width: 350px;
-  height: 500px;
+  width: 220px;
+  height: 320px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   z-index: 1;
+  border: 3px solid white;
+  border-radius: 15px;
 }
 
 .cardslist-card-line {
@@ -25,19 +28,72 @@
   margin: 2px 0;
   position: absolute;
   z-index: 5;
+  color: blue;
 }
 
-.cardslist-card-element-name {
+.cardslist-card-element {
   position: absolute;
   z-index: 10;
   color: red;
-  top: 20px;
+}
+.element-name {
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  font-weight: lighter;
+  font-weight: bolder;
 }
 
+.element-type {
+  bottom: 7px;
+  left: 20px;
+  font-weight: bolder;
+}
 
+.element-attribute {
+  top: 118px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 80px;
+}
+
+.element-rule {
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 170px;
+  font-size: 12px;
+}
+
+.element-collection {
+  bottom: 7px;
+  right: 15px;
+}
+
+.element-boost {
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+}
+
+.element-id {
+  bottom: 7px;
+  right: 102px;
+}
+
+.element-multiplicator {
+  top: 17px;
+  right: 17px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 50%;
+  font-weight: bolder;
+  font-size: 24px;
+}
 
 .cardslist-card-img {
   height: 500px;

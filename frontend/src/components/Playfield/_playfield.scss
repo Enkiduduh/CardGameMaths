@@ -1,0 +1,125 @@
+.playfield-container {
+  width: 90vw;
+  height: 95vh;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+///ADVERSARY....
+.playfield-adversary-container {
+  width: 80vw;
+  height: 30vh;
+  border: 1px solid white;
+  display: flex;
+}
+
+.playfield-adversary {
+  border: 1px solid white;
+  height: 30vh;
+}
+.adversary-area {
+  border: 1px solid white;
+  width: 60vw;
+}
+.adversary-deck {
+  border: 1px solid white;
+  width: 20vw;
+}
+
+////PLAYER....
+
+.playfield-player-container {
+  width: 90vw;
+  height: 30vh;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.playfield-player {
+  border: 1px solid white;
+  height: 30vh;
+}
+.player-area {
+  border: 1px solid white;
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.player-deck {
+  border: 1px solid white;
+  width: 20vw;
+}
+.playfield-player-objet-deck {
+  border: 3px solid white;
+  font-size: 50px;
+  width: 150px;
+  height: 200px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+}
+
+/////CENTRAL...
+.playfield-central-container {
+  width: 80vw;
+  height: 30vh;
+  border: 1px solid white;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.playfield-central-area {
+  width: 15vw;
+  height: 30vh;
+  border: 1px solid white;
+}
+
+////CARDS.....
+.playfield-player-card {
+  position: relative;
+  transition: all 0.5s ease;
+  bottom: 100px;
+  z-index: 5;
+  &:hover {
+    bottom: 300px;
+  }
+}
+
+.ppc-0 {
+  left: 0px;
+  z-index: 6;
+}
+.ppc-1 {
+  left: -170px;
+  z-index: 7;
+}
+.ppc-2 {
+  left: -340px;
+  z-index: 8;
+}
+.ppc-3 {
+  left: -510px;
+  z-index: 9;
+}
+.ppc-4 {
+  left: -680px;
+  z-index: 10;
+}
+.ppc-5 {
+  left: -850px;
+  z-index: 11;
+}
+.ppc-6 {
+  left: -1020px;
+  z-index: 12;
+}
+.ppc-7 {
+  left: -1190px;
+  z-index: 13;
+}

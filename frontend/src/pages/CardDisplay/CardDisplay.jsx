@@ -1,7 +1,7 @@
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function CardDisplay() {
+function CardDisplay({card_id}) {
   const { id } = useParams();
   console.log({ id });
   const [dataCard, setDataCard] = useState([]);
@@ -9,7 +9,8 @@ function CardDisplay() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`/api/cards/${id}`)
+    const endpoint = card_id ? `/api/cards/${card_id}` : `/api/cards/${id}`;
+    fetch(endpoint)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -34,36 +35,38 @@ function CardDisplay() {
     <div className="cardslist-container">
       {dataCard && (
         <div className="cardslist-card-container">
-          <div className="cardslist-card"
-           style={{ backgroundImage: `url(http://localhost:8080${dataCard.image_url})` }}
-          >
-            <div className="cardslist-card-line">
-              <span className="cardslist-card-element-name">{dataCard.name}</span>
-              <span>ID: {dataCard.id}</span>
-              <span>Type: {dataCard.card_type}</span>
-            </div>
-            <div className="cardslist-card-line">
-              <span>Attribut: {dataCard.attribute}</span>
-              <span>Niveau: {dataCard.multiplicator}</span>
-              <span>Type d'effet: {dataCard.boost}</span>
-            </div>
-            <div className="cardslist-card-line">
-              <span>Effet : {dataCard.rule}</span>
-            </div>
-            <div className="cardslist-card-line">
-              <span>Coût en boutique : {dataCard.cost} gold</span>
-            </div>
-          </div>
-          {/* <img
-            className="cardslist-card-img"
-            src={`http://localhost:8080${dataCard.image_url}`}
-            alt={dataCard.name}
-            onError={(e) => {
-              console.error("Image failed to load:", dataCard.image_url);
-              e.target.style.border = "2px solid red";
+          <div
+            className="cardslist-card"
+            style={{
+              backgroundImage: `url(http://localhost:8080${dataCard.image_url})`,
             }}
-            onLoad={() => console.log("Image loaded:", dataCard.image_url)}
-          /> */}
+          >
+            <span className="cardslist-card-element element-name">
+              {dataCard.name}
+            </span>
+            <span className="cardslist-card-element element-id">
+              ID{dataCard.id}
+            </span>
+            <span className="cardslist-card-element element-type">
+              {dataCard.card_type}
+            </span>
+            <div className="cardslist-card-element element-img"></div>
+            <span className="cardslist-card-element element-attribute">
+              {dataCard.attribute}
+            </span>
+            <span className="cardslist-card-element element-multiplicator">
+              {dataCard.multiplicator}
+            </span>
+            <span className="cardslist-card-element element-boost">
+              {dataCard.boost}
+            </span>
+            <span className="cardslist-card-element element-collection">
+              {dataCard.collection}
+            </span>
+            <span className="cardslist-card-element element-rule">
+              Effet : {dataCard.rule}
+            </span>
+          </div>
         </div>
       )}
     </div>

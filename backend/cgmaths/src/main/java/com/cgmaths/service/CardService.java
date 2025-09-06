@@ -7,8 +7,12 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import static java.util.Collections.shuffle;
 
 @Service
 @RequiredArgsConstructor
@@ -23,9 +27,6 @@ public class CardService {
         Card c = cardRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Card " + id));
 
-//        String tpl = c.getRule().getName(); // ex: "... {multiplicator} ..."
-//        String renderedRule = tpl.replace("{multiplicator}", String.valueOf(c.getMultiplicator()));
-
         // Ici on est dans la transaction, les proxys LAZY peuvent s'initialiser
         return CardDTO.from(c);
     }
@@ -36,5 +37,20 @@ public class CardService {
         return cards.stream()
                 .map(c -> CardDTO.from(c)
                 ).toList();
+    }
+
+    @Transactional
+    public List<CardDTO> getShuffledCards() {
+        var list = new ArrayList<>(
+                cardRepository.findAllWithRefs()
+                        .stream()
+                        .map(c -> CardDTO.from(c)
+                        ).toList()
+        );
+        Collections.shuffle(list);
+
+        int limit = Math.min(15, list.size());
+        return list.subList(0, limit);
+
     }
 }

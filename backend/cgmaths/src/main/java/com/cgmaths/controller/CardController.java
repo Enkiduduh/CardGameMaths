@@ -28,4 +28,8 @@ public class CardController {
         return cardService.getCard(id);
     }
 
+    @GetMapping("/cards/deckready")
+    public List<CardDTO> getShuffledCards() {
+        return cardService.getShuffledCards();
+    }
 }

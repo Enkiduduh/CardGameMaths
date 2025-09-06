@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CardDisplay from "../../pages/CardDisplay/CardDisplay";
 
 function CardsList() {
   const [dataCards, setDataCards] = useState([]);
@@ -32,20 +33,11 @@ function CardsList() {
     <div className="cardslist-container">
       {dataCards &&
         dataCards.map((card, idx) => (
-          <div key={idx} className="cardslist-card">
-            <p>
-              URL: {card.image_url} /ID: {card.id}
-            </p>
+          <div key={idx}>
             <Link to={`/cards/${card.id}`}>
-              <img
-                src={`http://localhost:8080${card.image_url}`}
-                alt={card.name || `Card ${idx}`}
-                onError={(e) => {
-                  console.error("Image failed to load:", card.image_url);
-                  e.target.style.border = "2px solid red";
-                }}
-                onLoad={() => console.log("Image loaded:", card.image_url)}
-              />
+             <CardDisplay
+              card_id={card.id}
+             />
             </Link>
           </div>
         ))}
