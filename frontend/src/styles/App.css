@@ -162,7 +162,7 @@
 
 .player-area {
   border: 1px solid white;
-  width: 70vw;
+  width: 60vw;
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -170,18 +170,19 @@
 
 .player-deck {
   border: 1px solid white;
-  width: 20vw;
+  width: 30vw;
 }
 
-.playfield-player-objet-deck {
+.playfield-player-objet-deck, .playfield-player-objet-wastepile {
   border: 3px solid white;
-  font-size: 50px;
+  font-size: 32px;
   width: 150px;
   height: 200px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .playfield-central-container {
@@ -249,12 +250,19 @@
 }
 
 .cardslist-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+}
+
+.cardslist-cards, .cardslist-cardsnumber {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  width: 100%;
 }
 
 .cardslist-card {
   margin: 5px;
+  flex: 1 1 200px; /* largeur de base de 200px */
 }
 
 .card-container {
@@ -267,5 +275,5 @@
   font-weight: bolder;
   border: 3px solid white;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.715);
+  background-color: rgb(0, 0, 0);
 }/*# sourceMappingURL=App.css.map */

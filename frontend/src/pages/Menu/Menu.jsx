@@ -9,8 +9,6 @@ function Menu() {
       <Link to="/cards/collection">
         <div>Collection</div>
       </Link>
-      <Card/>
-      <Card/>
     </div>
   );
 }

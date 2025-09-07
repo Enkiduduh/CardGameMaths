@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 function CardDisplay({card_id}) {
   const { id } = useParams();
-  console.log({ id });
   const [dataCard, setDataCard] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -20,7 +19,6 @@ function CardDisplay({card_id}) {
       .then((data) => {
         setDataCard(data);
         setLoading(false);
-        console.log(data);
       })
       .catch((error) => {
         setError(error.message);

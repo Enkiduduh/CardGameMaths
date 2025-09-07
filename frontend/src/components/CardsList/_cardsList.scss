@@ -1,9 +1,15 @@
 .cardslist-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display:flex;
+}
 
+.cardslist-cards, .cardslist-cardsnumber {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 800px;
+  width: 100%;
 }
 
 .cardslist-card {
   margin: 5px;
+  flex: 1 1 200px; /* largeur de base de 200px */
 }

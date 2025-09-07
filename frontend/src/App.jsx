@@ -7,6 +7,7 @@ import {
 import "./styles/App.css";
 import CardsCollection from "./pages/CardsCollection/CardsCollection";
 import CardDisplay from "./pages/CardDisplay/CardDisplay";
+import Card from "./components/Card/Card";
 import Menu from "./pages/Menu/Menu";
 import Gameduel from "./pages/Gameduel/Gameduel";
 import Error404 from "./pages/Error404/Error404";
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/cards/collection" element={<CardsCollection />} />
           <Route path="/cards/:id" element={<CardDisplay />} />
+          <Route path="/cards/numbers/:id" element={<Card />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/gameduel" element={<Gameduel />} />
           <Route path="/test" element={<TestPage />} />

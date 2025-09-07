@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS card_type (
   id INT PRIMARY KEY AUTO_INCREMENT,
-  name VARCHAR(16) NOT NULL UNIQUE  -- Action, Joker, Boss, Hero
+  name VARCHAR(16) NOT NULL UNIQUE  -- Action, Joker, Boss, Hero, Number
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS collection_ref (
@@ -47,6 +47,25 @@ CREATE TABLE IF NOT EXISTS card (
   INDEX idx_card_collection (collection_id),
   INDEX idx_card_boost      (boost_id),
   INDEX idx_card_rule       (rule_id)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE IF NOT EXISTS card_number (
+  id            INT PRIMARY KEY AUTO_INCREMENT,
+  code          VARCHAR(50) NOT NULL UNIQUE,
+  image_url     VARCHAR(200) NOT NULL,
+  value_nb      INT NOT NULL,
+  cost          INT NOT NULL,
+  name_fr       VARCHAR(100) NOT NULL,
+  type_id       INT NOT NULL,
+  collection_id INT NOT NULL,
+
+  CONSTRAINT fk_card_number_type        FOREIGN KEY (type_id)       REFERENCES card_type(id),
+  CONSTRAINT fk_card_number_collection  FOREIGN KEY (collection_id) REFERENCES collection_ref(id),
+
+  INDEX idx_card_number_type       (type_id),
+  INDEX idx_card_number_collection (collection_id)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

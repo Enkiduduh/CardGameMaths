@@ -8,6 +8,7 @@ function Playfield() {
   const [dataNumbers, setDataNumbers] = useState([]);
   const [hand, setHand] = useState([]);
   const [deck, setDeck] = useState([]);
+  const [wastepile, setWastepile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isDeckEmpty, setIsDeckEmpty] = useState(false);
@@ -37,9 +38,15 @@ function Playfield() {
   useEffect(() => {
     setHand(dataCards.slice(0, 5));
     setDeck(dataCards.slice(5, 15));
-    console.log(hand);
+    // console.log(hand);
+    for (let i = 0; i < 20; i++) {
+      setDataNumbers(...[dataNumbers], dataNumbers.push(<Card />))
+    }
+    console.log(dataNumbers.length)
     console.log(deck);
-  }, [dataCards]);
+    // setDeck(...[deck], deck.push(dataNumbers[0]))
+    // console.log(deck);
+  }, [dataCards, dataNumbers]);
 
   useEffect(() => {
     if (isDeckEmpty) {
@@ -56,6 +63,11 @@ function Playfield() {
   const addCardDeck = () => {
     setIsDeckEmpty(true);
   };
+
+  // // Créer un set de 20 cartes Numbers
+  // useEffect(() => {
+
+  // }, []);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -80,13 +92,23 @@ function Playfield() {
           {hand &&
             hand.map((card, id) => (
               <div key={id} className={`playfield-player-card ppc-${id}`}>
-                <CardDisplay card_id={card.id} />
+                <CardDisplay card_id={card.id} /> || <Card />
               </div>
             ))}
+        </div>
+        <div className="playfield-player player-wastepile">
+          <div
+            className="playfield-player-objet-wastepile"
+            onClick={addCardDeck}
+          >
+            Défausse
+            <span>{wastepile.length}</span>
+          </div>
         </div>
         <div className="playfield-player player-deck">
           <div className="playfield-player-objet-deck" onClick={addCardDeck}>
             Deck
+            <span>{deck.length}</span>
           </div>
         </div>
       </div>

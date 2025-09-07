@@ -2,11 +2,12 @@ INSERT INTO card_type (id, name) VALUES (1, 'Action');
 INSERT INTO card_type (id, name) VALUES (2, 'Joker');
 INSERT INTO card_type (id, name) VALUES (3, 'Boss');
 INSERT INTO card_type (id, name) VALUES (4, 'Hero');
+INSERT INTO card_type (id, name) VALUES (5, 'Number');
 
 INSERT INTO attribute_ref (id, name) VALUES (1, '+');
 INSERT INTO attribute_ref (id, name) VALUES (2, '-');
-INSERT INTO attribute_ref (id, name) VALUES (3, '*');
-INSERT INTO attribute_ref (id, name) VALUES (4, '/');
+INSERT INTO attribute_ref (id, name) VALUES (3, 'x');
+INSERT INTO attribute_ref (id, name) VALUES (4, '÷');
 
 INSERT INTO collection_ref (id, name) VALUES (1, '1ere Edition');
 
@@ -149,3 +150,71 @@ VALUES
   ('CARD-62', '/assets/card-1.png', 'Carte 62', 30, 2, 141, 3, 2, 2, 1),
   ('CARD-63', '/assets/card-1.png', 'Carte 63', 30, 1, 142, 3, 3, 2, 1),
   ('CARD-64', '/assets/card-1.png', 'Carte 64', 30, 2, 143, 3, 4, 2, 1);
+
+ INSERT INTO card_number (code, image_url, name_fr, cost, value_nb, type_id, collection_id)
+  VALUES
+    ('CARD-NB-0', '/assets/card-1.png', 'Carte Nombre 0', 5, 0, 5, 1),
+    ('CARD-NB-1', '/assets/card-1.png', 'Carte Nombre 1', 5, 1, 5, 1),
+    ('CARD-NB-2', '/assets/card-1.png', 'Carte Nombre 2', 5, 2, 5, 1),
+    ('CARD-NB-3', '/assets/card-1.png', 'Carte Nombre 3', 5, 3, 5, 1),
+    ('CARD-NB-4', '/assets/card-1.png', 'Carte Nombre 4', 5, 4, 5, 1),
+    ('CARD-NB-5', '/assets/card-1.png', 'Carte Nombre 5', 5, 5, 5, 1),
+    ('CARD-NB-6', '/assets/card-1.png', 'Carte Nombre 6', 5, 6, 5, 1),
+    ('CARD-NB-7', '/assets/card-1.png', 'Carte Nombre 7', 5, 7, 5, 1),
+    ('CARD-NB-8', '/assets/card-1.png', 'Carte Nombre 8', 5, 8, 5, 1),
+    ('CARD-NB-9', '/assets/card-1.png', 'Carte Nombre 9', 5, 9, 5, 1),
+    ('CARD-NB-10', '/assets/card-1.png', 'Carte Nombre 10', 5, 10, 5, 1),
+    ('CARD-NB-11', '/assets/card-1.png', 'Carte Nombre 11', 5, 11, 5, 1),
+    ('CARD-NB-12', '/assets/card-1.png', 'Carte Nombre 12', 5, 12, 5, 1),
+    ('CARD-NB-13', '/assets/card-1.png', 'Carte Nombre 13', 5, 13, 5, 1),
+    ('CARD-NB-14', '/assets/card-1.png', 'Carte Nombre 14', 5, 14, 5, 1),
+    ('CARD-NB-15', '/assets/card-1.png', 'Carte Nombre 15', 5, 15, 5, 1),
+    ('CARD-NB-16', '/assets/card-1.png', 'Carte Nombre 16', 5, 16, 5, 1),
+    ('CARD-NB-17', '/assets/card-1.png', 'Carte Nombre 17', 5, 17, 5, 1),
+    ('CARD-NB-18', '/assets/card-1.png', 'Carte Nombre 18', 5, 18, 5, 1),
+    ('CARD-NB-19', '/assets/card-1.png', 'Carte Nombre 19', 5, 19, 5, 1),
+    ('CARD-NB-20', '/assets/card-1.png', 'Carte Nombre 20', 5, 20, 5, 1),
+    ('CARD-NB-21', '/assets/card-1.png', 'Carte Nombre 21', 5, 21, 5, 1),
+    ('CARD-NB-22', '/assets/card-1.png', 'Carte Nombre 22', 5, 22, 5, 1),
+    ('CARD-NB-23', '/assets/card-1.png', 'Carte Nombre 23', 5, 23, 5, 1),
+    ('CARD-NB-24', '/assets/card-1.png', 'Carte Nombre 24', 5, 24, 5, 1),
+    ('CARD-NB-25', '/assets/card-1.png', 'Carte Nombre 25', 5, 25, 5, 1),
+    ('CARD-NB-26', '/assets/card-1.png', 'Carte Nombre 26', 5, 26, 5, 1),
+    ('CARD-NB-27', '/assets/card-1.png', 'Carte Nombre 27', 5, 27, 5, 1),
+    ('CARD-NB-28', '/assets/card-1.png', 'Carte Nombre 28', 5, 28, 5, 1),
+    ('CARD-NB-29', '/assets/card-1.png', 'Carte Nombre 29', 5, 29, 5, 1),
+    ('CARD-NB-30', '/assets/card-1.png', 'Carte Nombre 30', 5, 30, 5, 1),
+    ('CARD-NB-31', '/assets/card-1.png', 'Carte Nombre 31', 5, 31, 5, 1),
+    ('CARD-NB-32', '/assets/card-1.png', 'Carte Nombre 32', 5, 32, 5, 1),
+    ('CARD-NB-33', '/assets/card-1.png', 'Carte Nombre 33', 5, 33, 5, 1),
+    ('CARD-NB-34', '/assets/card-1.png', 'Carte Nombre 34', 5, 34, 5, 1),
+    ('CARD-NB-35', '/assets/card-1.png', 'Carte Nombre 35', 5, 35, 5, 1),
+    ('CARD-NB-36', '/assets/card-1.png', 'Carte Nombre 36', 5, 36, 5, 1),
+    ('CARD-NB-37', '/assets/card-1.png', 'Carte Nombre 37', 5, 37, 5, 1),
+    ('CARD-NB-38', '/assets/card-1.png', 'Carte Nombre 38', 5, 38, 5, 1),
+    ('CARD-NB-39', '/assets/card-1.png', 'Carte Nombre 39', 5, 39, 5, 1),
+    ('CARD-NB-40', '/assets/card-1.png', 'Carte Nombre 40', 5, 40, 5, 1),
+    ('CARD-NB-41', '/assets/card-1.png', 'Carte Nombre 41', 5, 41, 5, 1),
+    ('CARD-NB-42', '/assets/card-1.png', 'Carte Nombre 42', 5, 42, 5, 1),
+    ('CARD-NB-43', '/assets/card-1.png', 'Carte Nombre 43', 5, 43, 5, 1),
+    ('CARD-NB-44', '/assets/card-1.png', 'Carte Nombre 44', 5, 44, 5, 1),
+    ('CARD-NB-45', '/assets/card-1.png', 'Carte Nombre 45', 5, 45, 5, 1),
+    ('CARD-NB-46', '/assets/card-1.png', 'Carte Nombre 46', 5, 46, 5, 1),
+    ('CARD-NB-47', '/assets/card-1.png', 'Carte Nombre 47', 5, 47, 5, 1),
+    ('CARD-NB-48', '/assets/card-1.png', 'Carte Nombre 48', 5, 48, 5, 1),
+    ('CARD-NB-49', '/assets/card-1.png', 'Carte Nombre 49', 5, 49, 5, 1),
+    ('CARD-NB-50', '/assets/card-1.png', 'Carte Nombre 50', 5, 50, 5, 1),
+    ('CARD-NB-51', '/assets/card-1.png', 'Carte Nombre 51', 5, 51, 5, 1),
+    ('CARD-NB-52', '/assets/card-1.png', 'Carte Nombre 52', 5, 52, 5, 1),
+    ('CARD-NB-53', '/assets/card-1.png', 'Carte Nombre 53', 5, 53, 5, 1),
+    ('CARD-NB-54', '/assets/card-1.png', 'Carte Nombre 54', 5, 54, 5, 1),
+    ('CARD-NB-55', '/assets/card-1.png', 'Carte Nombre 55', 5, 55, 5, 1),
+    ('CARD-NB-56', '/assets/card-1.png', 'Carte Nombre 56', 5, 56, 5, 1),
+    ('CARD-NB-57', '/assets/card-1.png', 'Carte Nombre 57', 5, 57, 5, 1),
+    ('CARD-NB-58', '/assets/card-1.png', 'Carte Nombre 58', 5, 58, 5, 1),
+    ('CARD-NB-59', '/assets/card-1.png', 'Carte Nombre 59', 5, 59, 5, 1),
+    ('CARD-NB-60', '/assets/card-1.png', 'Carte Nombre 60', 5, 60, 5, 1),
+    ('CARD-NB-61', '/assets/card-1.png', 'Carte Nombre 61', 5, 61, 5, 1),
+    ('CARD-NB-62', '/assets/card-1.png', 'Carte Nombre 62', 5, 62, 5, 1),
+    ('CARD-NB-63', '/assets/card-1.png', 'Carte Nombre 63', 5, 63, 5, 1),
+    ('CARD-NB-64', '/assets/card-1.png', 'Carte Nombre 64', 5, 64, 5, 1);
