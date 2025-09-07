@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { shuffle } from "../../logic/shuffle";
 import CardDisplay from "../../pages/CardDisplay/CardDisplay";
 import Card from "../Card/Card";
 
@@ -6,12 +7,15 @@ function Playfield() {
   const [dataCards, setDataCards] = useState([]);
   const [newDataCards, setNewDataCards] = useState([]);
   const [dataNumbers, setDataNumbers] = useState([]);
+  const [numbers, setNumbers] = useState([]);
   const [hand, setHand] = useState([]);
   const [deck, setDeck] = useState([]);
   const [wastepile, setWastepile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const [isDeckEmpty, setIsDeckEmpty] = useState(false);
+  const [startGame, setStartGame] = useState(true);
 
   useEffect(() => {
     fetch("/api/cards/deckready")
@@ -32,31 +36,52 @@ function Playfield() {
   }, []);
 
   useEffect(() => {
-    setDataNumbers();
+    fetch("/api/cards/numbers/deckready")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setDataNumbers(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
-    setHand(dataCards.slice(0, 5));
-    setDeck(dataCards.slice(5, 15));
-    // console.log(hand);
-    for (let i = 0; i < 20; i++) {
-      setDataNumbers(...[dataNumbers], dataNumbers.push(<Card />))
+    if (dataCards.length > 0 && dataNumbers.length > 0) {
+      const newNumbers = dataNumbers.slice(0, 20);
+      const newDeck = dataCards.slice(0, 15);
+
+      setNumbers(newNumbers);
+
+      const finalDeck = [...newDeck, ...newNumbers];
+      const shuffledDeck = shuffle(finalDeck);
+
+      console.log("Final deck:", finalDeck);
+      console.log("Final shuffled deck:", shuffledDeck);
+
+      const newHand = shuffledDeck.slice(0, 5);
+      setDeck(shuffledDeck.slice(5, 35));
+      setHand(newHand);
+      console.log(newHand);
+
+      setStartGame(false); // Éviter que ça se répète
     }
-    console.log(dataNumbers.length)
-    console.log(deck);
-    // setDeck(...[deck], deck.push(dataNumbers[0]))
-    // console.log(deck);
-  }, [dataCards, dataNumbers]);
+  }, [dataCards, dataNumbers, startGame]);
 
   useEffect(() => {
-    if (isDeckEmpty) {
-      if (deck.length > 0) {
-        setHand(...[hand], hand.push(deck[0]));
-        setDeck(...[deck], deck.shift(deck));
-        // console.log(deck);
-        // console.log(hand);
-        setIsDeckEmpty(false);
-      }
+    if (isDeckEmpty && deck.length > 0 && hand.length < 8) {
+      setHand(...[hand], hand.push(deck[0]));
+      console.log(hand);
+      console.log(deck);
+      setDeck(...[deck], deck.shift(deck));
+      setIsDeckEmpty(false);
     }
   });
 
@@ -64,10 +89,6 @@ function Playfield() {
     setIsDeckEmpty(true);
   };
 
-  // // Créer un set de 20 cartes Numbers
-  // useEffect(() => {
-
-  // }, []);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -92,23 +113,29 @@ function Playfield() {
           {hand &&
             hand.map((card, id) => (
               <div key={id} className={`playfield-player-card ppc-${id}`}>
-                <CardDisplay card_id={card.id} /> || <Card />
+                {card.card_type === "Number" ? (
+                  <Card card_id={card.id} />
+                ) : (
+                  <CardDisplay card_id={card.id} />
+                )}
               </div>
             ))}
         </div>
-        <div className="playfield-player player-wastepile">
-          <div
-            className="playfield-player-objet-wastepile"
-            onClick={addCardDeck}
-          >
-            Défausse
-            <span>{wastepile.length}</span>
+        <div className="playfield-player-decks-container">
+          <div className="playfield-player player-wastepile">
+            <div
+              className="playfield-player-objet-wastepile"
+              onClick={addCardDeck}
+            >
+              Défausse
+              <span>{wastepile.length}</span>
+            </div>
           </div>
-        </div>
-        <div className="playfield-player player-deck">
-          <div className="playfield-player-objet-deck" onClick={addCardDeck}>
-            Deck
-            <span>{deck.length}</span>
+          <div className="playfield-player player-deck">
+            <div className="playfield-player-objet-deck" onClick={addCardDeck}>
+              Deck
+              <span>{deck.length}</span>
+            </div>
           </div>
         </div>
       </div>

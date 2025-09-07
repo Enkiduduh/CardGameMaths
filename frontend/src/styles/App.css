@@ -6,8 +6,8 @@
 .cardslist-card {
   display: flex;
   flex-direction: column;
-  width: 220px;
-  height: 320px;
+  width: 180px;
+  height: 270px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -36,35 +36,37 @@
 }
 
 .element-name {
-  top: 12px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: bolder;
 }
 
 .element-type {
-  bottom: 7px;
+  bottom: 8px;
+  font-size: 10px;
   left: 20px;
   font-weight: bolder;
 }
 
 .element-attribute {
-  top: 118px;
+  top: 105px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 80px;
+  font-size: 60px;
 }
 
 .element-rule {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 170px;
-  font-size: 12px;
+  width: 140px;
+  font-size: 9px;
 }
 
 .element-collection {
-  bottom: 7px;
+  bottom: 8px;
+  font-size: 10px;
   right: 15px;
 }
 
@@ -76,13 +78,14 @@
 }
 
 .element-id {
-  bottom: 7px;
-  right: 102px;
+  bottom: 8px;
+  font-size: 10px;
+  right: 85px;
 }
 
 .element-multiplicator {
-  top: 17px;
-  right: 17px;
+  top: 12px;
+  right: 10px;
   width: 30px;
   height: 30px;
   display: flex;
@@ -118,7 +121,6 @@
 .playfield-container {
   width: 90vw;
   height: 95vh;
-  border: 1px solid white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,45 +152,44 @@
 .playfield-player-container {
   width: 90vw;
   height: 30vh;
-  border: 1px solid white;
   display: flex;
   justify-content: space-between;
 }
 
 .playfield-player {
-  border: 1px solid white;
   height: 30vh;
 }
 
 .player-area {
-  border: 1px solid white;
-  width: 60vw;
+  width: 70vw;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   position: relative;
 }
 
-.player-deck {
-  border: 1px solid white;
+.playfield-player-decks-container {
+  display: flex;
   width: 30vw;
+  justify-content: right;
 }
 
-.playfield-player-objet-deck, .playfield-player-objet-wastepile {
+.playfield-player-objet-deck,
+.playfield-player-objet-wastepile {
   border: 3px solid white;
-  font-size: 32px;
-  width: 150px;
-  height: 200px;
+  font-size: 24px;
+  width: 100px;
+  height: 130px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 2px;
 }
 
 .playfield-central-container {
   width: 80vw;
   height: 30vh;
-  border: 1px solid white;
   display: flex;
   justify-content: space-evenly;
 }
@@ -202,11 +203,11 @@
 .playfield-player-card {
   position: relative;
   transition: all 0.5s ease;
-  bottom: 100px;
+  bottom: 60px;
   z-index: 5;
 }
 .playfield-player-card:hover {
-  bottom: 300px;
+  bottom: 80px;
 }
 
 .ppc-0 {
@@ -217,36 +218,6 @@
 .ppc-1 {
   left: -170px;
   z-index: 7;
-}
-
-.ppc-2 {
-  left: -340px;
-  z-index: 8;
-}
-
-.ppc-3 {
-  left: -510px;
-  z-index: 9;
-}
-
-.ppc-4 {
-  left: -680px;
-  z-index: 10;
-}
-
-.ppc-5 {
-  left: -850px;
-  z-index: 11;
-}
-
-.ppc-6 {
-  left: -1020px;
-  z-index: 12;
-}
-
-.ppc-7 {
-  left: -1190px;
-  z-index: 13;
 }
 
 .cardslist-container {
@@ -261,13 +232,13 @@
 }
 
 .cardslist-card {
-  margin: 5px;
   flex: 1 1 200px; /* largeur de base de 200px */
+  margin: 0 2px;
 }
 
 .card-container {
-  width: 220px;
-  height: 320px;
+  width: 180px;
+  height: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -276,4 +247,5 @@
   border: 3px solid white;
   border-radius: 15px;
   background-color: rgb(0, 0, 0);
+  margin: 0 2px;
 }/*# sourceMappingURL=App.css.map */

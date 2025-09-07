@@ -1,14 +1,14 @@
 .cardslist-card-container {
   display: flex;
   align-items: center;
-  
+
 }
 
 .cardslist-card {
   display: flex;
   flex-direction: column;
-  width: 220px;
-  height: 320px;
+  width: 180px;
+  height: 270px;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -37,35 +37,37 @@
   color: red;
 }
 .element-name {
-  top: 12px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
   font-weight: bolder;
 }
 
 .element-type {
-  bottom: 7px;
+ bottom: 8px;
+  font-size: 10px;
   left: 20px;
   font-weight: bolder;
 }
 
 .element-attribute {
-  top: 118px;
+  top: 105px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 80px;
+  font-size: 60px;
 }
 
 .element-rule {
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  width: 170px;
-  font-size: 12px;
+  width: 140px;
+  font-size: 9px;
 }
 
 .element-collection {
-  bottom: 7px;
+  bottom: 8px;
+  font-size: 10px;
   right: 15px;
 }
 
@@ -77,13 +79,14 @@
 }
 
 .element-id {
-  bottom: 7px;
-  right: 102px;
+   bottom: 8px;
+  font-size: 10px;
+  right: 85px;
 }
 
 .element-multiplicator {
-  top: 17px;
-  right: 17px;
+  top: 12px;
+  right: 10px;
   width: 30px;
   height: 30px;
   display: flex;

@@ -1,7 +1,7 @@
 .playfield-container {
   width: 90vw;
   height: 95vh;
-  border: 1px solid white;
+  // border: 1px solid white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,43 +34,45 @@
 .playfield-player-container {
   width: 90vw;
   height: 30vh;
-  border: 1px solid white;
   display: flex;
   justify-content: space-between;
 }
 
 .playfield-player {
-  border: 1px solid white;
   height: 30vh;
 }
 .player-area {
-  border: 1px solid white;
-  width: 60vw;
+  width: 70vw;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   position: relative;
 }
-.player-deck {
-  border: 1px solid white;
+
+.playfield-player-decks-container {
+  display: flex;
+
   width: 30vw;
+  justify-content: right;
 }
-.playfield-player-objet-deck, .playfield-player-objet-wastepile {
+
+.playfield-player-objet-deck,
+.playfield-player-objet-wastepile {
   border: 3px solid white;
-  font-size: 32px;
-  width: 150px;
-  height: 200px;
+  font-size: 24px;
+  width: 100px;
+  height: 130px;
   border-radius: 20px;
   display: flex;
-  justify-content: center ;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 2px;
 }
 
 /////CENTRAL...
 .playfield-central-container {
   width: 80vw;
   height: 30vh;
-  border: 1px solid white;
   display: flex;
   justify-content: space-evenly;
 }
@@ -85,10 +87,10 @@
 .playfield-player-card {
   position: relative;
   transition: all 0.5s ease;
-  bottom: 100px;
+  bottom: 60px;
   z-index: 5;
   &:hover {
-    bottom: 300px;
+    bottom: 80px;
   }
 }
 
@@ -100,27 +102,27 @@
   left: -170px;
   z-index: 7;
 }
-.ppc-2 {
-  left: -340px;
-  z-index: 8;
-}
-.ppc-3 {
-  left: -510px;
-  z-index: 9;
-}
-.ppc-4 {
-  left: -680px;
-  z-index: 10;
-}
-.ppc-5 {
-  left: -850px;
-  z-index: 11;
-}
-.ppc-6 {
-  left: -1020px;
-  z-index: 12;
-}
-.ppc-7 {
-  left: -1190px;
-  z-index: 13;
-}
+// .ppc-2 {
+//   left: -340px;
+//   z-index: 8;
+// }
+// .ppc-3 {
+//   left: -510px;
+//   z-index: 9;
+// }
+// .ppc-4 {
+//   left: -680px;
+//   z-index: 10;
+// }
+// .ppc-5 {
+//   left: -850px;
+//   z-index: 11;
+// }
+// .ppc-6 {
+//   left: -1020px;
+//   z-index: 12;
+// }
+// .ppc-7 {
+//   left: -1190px;
+//   z-index: 13;
+// }
