@@ -42,17 +42,25 @@
   height: 30vh;
 }
 .player-area {
-  width: 70vw;
+  width: 80vw;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
   position: relative;
+  bottom: -80px;
+}
+
+.pca-action {
+  background-image: url("../../../public/symbols.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .playfield-player-decks-container {
   display: flex;
-
-  width: 30vw;
   justify-content: right;
+   flex-direction: column;
+   align-items: center;
 }
 
 .playfield-player-objet-deck,
@@ -78,51 +86,73 @@
 }
 
 .playfield-central-area {
-  width: 15vw;
-  height: 30vh;
-  border: 1px solid white;
+  width: 180px;
+  height: 270px;
+  padding: 20px;
+  border: 7px solid white;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgoldenrod;
 }
 
 ////CARDS.....
 .playfield-player-card {
-  position: relative;
+  position: absolute;
   transition: all 0.5s ease;
-  bottom: 60px;
   z-index: 5;
   &:hover {
-    bottom: 80px;
+    bottom: 250px;
+    transform: rotate(0deg) translateX(-50%);
   }
 }
 
 .ppc-0 {
-  left: 0px;
+  left: 20%;
+  transform: translateX(-50%) rotate(-20deg) ;
   z-index: 6;
+  bottom: 0px;
 }
 .ppc-1 {
-  left: -170px;
+  left: 30%;
+  transform: translateX(-50%) rotate(-20deg) ;
   z-index: 7;
+  bottom: 10px;
 }
-// .ppc-2 {
-//   left: -340px;
-//   z-index: 8;
-// }
-// .ppc-3 {
-//   left: -510px;
-//   z-index: 9;
-// }
-// .ppc-4 {
-//   left: -680px;
-//   z-index: 10;
-// }
-// .ppc-5 {
-//   left: -850px;
-//   z-index: 11;
-// }
-// .ppc-6 {
-//   left: -1020px;
-//   z-index: 12;
-// }
-// .ppc-7 {
-//   left: -1190px;
-//   z-index: 13;
-// }
+.ppc-2 {
+  left: 40%;
+  transform: translateX(-50%) rotate(-15deg);
+  z-index: 8;
+  bottom: 20px;
+}
+.ppc-3 {
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  z-index: 9;
+  bottom: 30px;
+}
+.ppc-4 {
+  left: 60%;
+  transform: translateX(-50%) rotate(0deg);
+  z-index: 10;
+  bottom: 30px;
+}
+.ppc-5 {
+  left: 70%;
+  transform: translateX(-50%) rotate(10deg);
+  z-index: 11;
+  bottom: 20px;
+}
+.ppc-6 {
+  left: 80%;
+  transform: translateX(-50%) rotate(15deg);
+  z-index: 12;
+  bottom: 10px;
+}
+.ppc-7 {
+  left: 90%;
+  transform: translateX(-50%) rotate(15deg);
+  z-index: 13;
+  bottom: 0px;
+}
