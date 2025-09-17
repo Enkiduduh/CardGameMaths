@@ -6,8 +6,6 @@ import Card from "../Card/Card";
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
   const [newDataCards, setNewDataCards] = useState([]);
-  const [dataNumbers, setDataNumbers] = useState([]);
-  const [numbers, setNumbers] = useState([]);
   const [hand, setHand] = useState([]);
   const [deck, setDeck] = useState([]);
   const [wastepile, setWastepile] = useState([]);
@@ -43,31 +41,10 @@ function Playfield() {
   }, []);
 
   useEffect(() => {
-    fetch("/api/cards/numbers/deckready")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setDataNumbers(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    if (dataCards.length > 0 && dataNumbers.length > 0) {
-      const newNumbers = dataNumbers.slice(0, 20);
+    if (dataCards.length > 0) {
       const newDeck = dataCards.slice(0, 15);
 
-      setNumbers(newNumbers);
-
-      const finalDeck = [...newDeck, ...newNumbers];
+      const finalDeck = [...newDeck];
       const shuffledDeck = shuffle(finalDeck);
 
       console.log("Final deck:", finalDeck);
@@ -80,7 +57,7 @@ function Playfield() {
 
       setStartGame(false); // Éviter que ça se répète
     }
-  }, [dataCards, dataNumbers, startGame]);
+  }, [dataCards, startGame]);
 
   useEffect(() => {
     if (isDeckEmpty && deck.length > 0 && hand.length < 8) {
@@ -145,12 +122,8 @@ function Playfield() {
 
   // Fonction pour valider si une carte peut être posée sur une case
   const validateDrop = (caseId, cardType) => {
-    // Cases 1 et 3 : seulement les cartes Number
-    if ((caseId === "1" || caseId === "3") && cardType !== "Number") {
-      return false;
-    }
-    // Case 2 : seulement les cartes Action (pas Number)
-    if (caseId === "2" && cardType === "Number") {
+    // Case : seulement les cartes Action (pas Number)
+    if (caseId === "1" && cardType === "Number") {
       return false;
     }
     return true;
@@ -182,33 +155,17 @@ function Playfield() {
       </div> */}
 
       <div className="playfield-central-container">
+        <div className="playfield-central-area pca-number"></div>
         <div
-          className="playfield-central-area pca-number"
+          className="playfield-central-area pca-action"
           data-case="1"
           onDragOver={handleDragOver}
           onDrop={(e) => handleDrop(e, "1")}
           onClick={() => removeCardFromCase("1")}
         >
-          {playedCards["1"] && <Card card_id={playedCards["1"].id} />}
+          {playedCards["1"] && <CardDisplay card_id={playedCards["1"].id} />}
         </div>
-        <div
-          className="playfield-central-area pca-action"
-          data-case="2"
-          onDragOver={handleDragOver}
-          onDrop={(e) => handleDrop(e, "2")}
-          onClick={() => removeCardFromCase("2")}
-        >
-          {playedCards["2"] && <CardDisplay card_id={playedCards["2"].id} />}
-        </div>
-        <div
-          className="playfield-central-area pca-number"
-          data-case="3"
-          onDragOver={handleDragOver}
-          onDrop={(e) => handleDrop(e, "3")}
-          onClick={() => removeCardFromCase("3")}
-        >
-          {playedCards["3"] && <Card card_id={playedCards["3"].id} />}
-        </div>
+        <div className="playfield-central-area pca-number"></div>
       </div>
 
       <div className="playfield-player-container">
@@ -221,11 +178,7 @@ function Playfield() {
                 draggable
                 onDragStart={(e) => handleDragStart(e, card)}
               >
-                {card.card_type === "Number" ? (
-                  <Card card_id={card.id} />
-                ) : (
-                  <CardDisplay card_id={card.id} />
-                )}
+                <CardDisplay card_id={card.id} />
               </div>
             ))}
         </div>
