@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
   const [newDataCards, setNewDataCards] = useState([]);
+  const [newDataItem, setNewDataItem] = useState([]);
   const [hand, setHand] = useState([]);
   const [deck, setDeck] = useState([]);
   const [wastepile, setWastepile] = useState([]);
@@ -15,12 +16,29 @@ function Playfield() {
   const [isDeckEmpty, setIsDeckEmpty] = useState(false);
   const [startGame, setStartGame] = useState(true);
 
+  const [rightNb, setRightNb] = useState(0);
+  const [leftNb, setLeftNb] = useState(0);
+  const [symbol, setSymbol] = useState("");
+  
+  const [isAttributeDropped, setIsAttributeDropped] = useState(false);
+
+  // PLAYER STATS
+  const [playerPoints, setPlayerPoints] = useState(0);
+  const [playerCrystals, setPlayerCrystals] = useState(0);
+
   // États pour les cartes jouées
   const [playedCards, setPlayedCards] = useState({
     1: null, // case 1
-    2: null, // case 2
-    3: null, // case 3
   });
+
+  useEffect(() => {
+    if (isAttributeDropped) {
+      const randomNbLeft = Math.floor(Math.random() * 50);
+      const randomNbRight = Math.floor(Math.random() * 50);
+      setRightNb(randomNbRight);
+      setLeftNb(randomNbLeft);
+    }
+  }, [isAttributeDropped]);
 
   useEffect(() => {
     fetch("/api/cards/deckready")
@@ -41,20 +59,21 @@ function Playfield() {
   }, []);
 
   useEffect(() => {
-    if (dataCards.length > 0) {
-      const newDeck = dataCards.slice(0, 15);
+    setNewDataItem(dataCards.filter((item) => item.attribute === "n"));
+    console.log(newDataItem);
+  }, [dataCards]);
 
+  useEffect(() => {
+    if (dataCards.length > 0) {
+      const newDeck = dataCards
+        .slice(0, 15)
+        .filter((card) => card.attribute !== "n");
       const finalDeck = [...newDeck];
       const shuffledDeck = shuffle(finalDeck);
-
-      console.log("Final deck:", finalDeck);
       console.log("Final shuffled deck:", shuffledDeck);
-
       const newHand = shuffledDeck.slice(0, 5);
       setDeck(shuffledDeck.slice(5, 35));
       setHand(newHand);
-      console.log(newHand);
-
       setStartGame(false); // Éviter que ça se répète
     }
   }, [dataCards, startGame]);
@@ -106,6 +125,8 @@ function Playfield() {
         return;
       }
 
+      setIsAttributeDropped(true);
+
       // Mettre à jour les cartes jouées
       setPlayedCards((prev) => ({
         ...prev,
@@ -129,8 +150,14 @@ function Playfield() {
     return true;
   };
 
+  useEffect(() => {
+    console.log("isAttributeDropped changed to:", isAttributeDropped);
+  }, [isAttributeDropped]);
+
   // Fonction pour retirer une carte d'une case
   const removeCardFromCase = (caseId) => {
+    setIsAttributeDropped(false);
+    console.log(isAttributeDropped);
     const cardToRemove = playedCards[caseId];
     if (cardToRemove) {
       // Remettre la carte dans la défausse
@@ -149,13 +176,12 @@ function Playfield() {
 
   return (
     <div className="playfield-container">
-      {/* <div className="playfield-adversary-container">
-        <div className="playfield-player player-deck"></div>
-        <div className="playfield-player player-area"></div>
-      </div> */}
-
       <div className="playfield-central-container">
-        <div className="playfield-central-area pca-number"></div>
+        {isAttributeDropped ? (
+          <div className="playfield-central-area pca-number">{leftNb}</div>
+        ) : (
+          <div className="playfield-central-area pca-number"></div>
+        )}
         <div
           className="playfield-central-area pca-action"
           data-case="1"
@@ -165,8 +191,16 @@ function Playfield() {
         >
           {playedCards["1"] && <CardDisplay card_id={playedCards["1"].id} />}
         </div>
-        <div className="playfield-central-area pca-number"></div>
+        {isAttributeDropped ? (
+          <div className="playfield-central-area pca-number">{rightNb}</div>
+        ) : (
+          <div className="playfield-central-area pca-number"></div>
+        )}
       </div>
+
+<div>
+résultat =
+</div>
 
       <div className="playfield-player-container">
         <div className="playfield-player player-area">
@@ -187,12 +221,12 @@ function Playfield() {
             className="playfield-player-objet-wastepile"
             onClick={addCardDeck}
           >
-            Vie
-            <span>{lifePlayer}</span>
+            Score
+            <span>{playerPoints} pts</span>
           </div>
           <div className="playfield-player-objet-deck" onClick={addCardDeck}>
-            Deck
-            <span>{deck.length}</span>
+            Cristal
+            <span>{playerCrystals}</span>
           </div>
           <div
             className="playfield-player-objet-wastepile"

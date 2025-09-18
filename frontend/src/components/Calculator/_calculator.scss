@@ -1,0 +1,21 @@
+.calculator-screen {
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+}
+
+.calculator-key-container {
+  display :grid;
+  grid-template-columns: repeat(3, 1fr);
+
+}
+
+.calculator-key {
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:10px;
+}
