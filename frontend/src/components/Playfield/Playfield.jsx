@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { shuffle } from "../../logic/shuffle";
 import CardDisplay from "../../pages/CardDisplay/CardDisplay";
 import Card from "../Card/Card";
+import Calculator from "../Calculator/Calculator";
 
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
@@ -19,7 +20,7 @@ function Playfield() {
   const [rightNb, setRightNb] = useState(0);
   const [leftNb, setLeftNb] = useState(0);
   const [symbol, setSymbol] = useState("");
-  
+  // const [mathSymbol, setMathSymbol] = useState("");
   const [isAttributeDropped, setIsAttributeDropped] = useState(false);
 
   // PLAYER STATS
@@ -33,10 +34,22 @@ function Playfield() {
 
   useEffect(() => {
     if (isAttributeDropped) {
-      const randomNbLeft = Math.floor(Math.random() * 50);
-      const randomNbRight = Math.floor(Math.random() * 50);
-      setRightNb(randomNbRight);
-      setLeftNb(randomNbLeft);
+      if (symbol === "-") {
+        const randomNbLeft = Math.floor(Math.random() * 50);
+        const randomNbRight = Math.floor(Math.random() * 50);
+        setRightNb(randomNbRight);
+        setLeftNb(randomNbLeft);
+      } else if (symbol === "÷") {
+        const randomNbLeft = Math.floor(Math.random() * 50);
+        const randomNbRight = Math.floor(Math.random() * 50);
+        setRightNb(randomNbRight);
+        setLeftNb(randomNbLeft);
+      } else {
+        const randomNbLeft = Math.floor(Math.random() * 50);
+        const randomNbRight = Math.floor(Math.random() * 50);
+        setRightNb(randomNbRight);
+        setLeftNb(randomNbLeft);
+      }
     }
   }, [isAttributeDropped]);
 
@@ -92,6 +105,21 @@ function Playfield() {
     setIsDeckEmpty(true);
   };
 
+  const calculateResult = () => {
+    switch (symbol) {
+      case "+":
+        return leftNb + rightNb;
+      case "-":
+        return leftNb - rightNb;
+      case "x":
+        return leftNb * rightNb;
+      case "÷":
+        return leftNb / rightNb;
+      default:
+        return "?";
+    }
+  };
+
   const handleDragStart = (e, card) => {
     // Transmettre l'ID de la carte et son index dans la main
     const dragData = JSON.stringify({
@@ -99,6 +127,7 @@ function Playfield() {
       cardType: card.card_type,
       handIndex: hand.findIndex((c) => c.id === card.id),
     });
+    setSymbol(card.attribute);
     e.dataTransfer.setData("text/plain", dragData);
   };
 
@@ -196,11 +225,14 @@ function Playfield() {
         ) : (
           <div className="playfield-central-area pca-number"></div>
         )}
+        <Calculator />
       </div>
 
-<div>
-résultat =
-</div>
+      <div>
+        {leftNb}
+        {symbol}
+        {rightNb} = {calculateResult()}
+      </div>
 
       <div className="playfield-player-container">
         <div className="playfield-player player-area">

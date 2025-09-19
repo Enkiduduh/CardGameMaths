@@ -4,9 +4,7 @@ function TestPage() {
   return (
     <div>
       <Dice />
-      <Dice />
-      <Dice />
-      <Dice />
+     
       <Calculator />
     </div>
   );
