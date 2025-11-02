@@ -6,6 +6,9 @@ function Menu() {
        <Link to="/gameduel">
         <div>Jouer</div>
       </Link>
+       <Link to="/gameduelV2">
+        <div>Jouer V2</div>
+      </Link>
       <Link to="/cards/collection">
         <div>Collection</div>
       </Link>

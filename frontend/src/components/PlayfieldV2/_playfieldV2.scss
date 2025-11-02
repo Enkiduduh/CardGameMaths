@@ -1,0 +1,198 @@
+.playfield-container {
+  width: 90vw;
+  height: 95vh;
+  // border: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+//TOP
+.playfield-top-container {
+  height: 100px;
+  width: 100%;
+  background-color: red;
+}
+
+///ADVERSARY....
+.playfield-adversary-container {
+  width: 80vw;
+  height: 30vh;
+  border: 1px solid white;
+  display: flex;
+}
+
+.playfield-adversary {
+  border: 1px solid white;
+  height: 30vh;
+}
+.adversary-area {
+  border: 1px solid white;
+  width: 60vw;
+}
+.adversary-deck {
+  border: 1px solid white;
+  width: 20vw;
+}
+
+////PLAYER....
+
+.playfield-player-container {
+  width: 90vw;
+  height: 30vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.playfield-player {
+  height: 30vh;
+}
+.player-area {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  bottom: -80px;
+}
+
+.pca-actionV2 {
+  // background-image: url("../../../public/symbols.png");
+  // background-position: center;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  font-size: 100px;
+}
+
+.playfield-player-decks-container {
+  display: flex;
+  justify-content: right;
+   flex-direction: column;
+   align-items: center;
+}
+
+.playfield-player-objet-deck,
+.playfield-player-objet-wastepile {
+  border: 3px solid white;
+  font-size: 24px;
+  width: 100px;
+  height: 130px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 2px;
+}
+
+/////CENTRAL...
+.playfield-central-container {
+  width: 50vw;
+  height: 30vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.playfield-central-area {
+  width: 120px;
+  height: 160px;
+  padding: 20px;
+  border: 7px solid white;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgoldenrod;
+}
+
+.pca-number {
+  font-size: 120px;
+  font-weight: bolder;
+}
+
+.playfield-character-container {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  border: 7px solid white;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgoldenrod;
+}
+
+////CARDS.....
+.playfield-player-card {
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 5;
+  &:hover {
+    bottom: 250px;
+    transform: rotate(0deg) translateX(-50%);
+  }
+}
+
+.ppc-0 {
+  left: 20%;
+  transform: translateX(-50%) rotate(-20deg) ;
+  z-index: 6;
+  bottom: 0px;
+}
+.ppc-1 {
+  left: 30%;
+  transform: translateX(-50%) rotate(-20deg) ;
+  z-index: 7;
+  bottom: 10px;
+}
+.ppc-2 {
+  left: 40%;
+  transform: translateX(-50%) rotate(-15deg);
+  z-index: 8;
+  bottom: 20px;
+}
+.ppc-3 {
+  left: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  z-index: 9;
+  bottom: 30px;
+}
+.ppc-4 {
+  left: 60%;
+  transform: translateX(-50%) rotate(0deg);
+  z-index: 10;
+  bottom: 30px;
+}
+.ppc-5 {
+  left: 70%;
+  transform: translateX(-50%) rotate(10deg);
+  z-index: 11;
+  bottom: 20px;
+}
+.ppc-6 {
+  left: 80%;
+  transform: translateX(-50%) rotate(15deg);
+  z-index: 12;
+  bottom: 10px;
+}
+.ppc-7 {
+  left: 90%;
+  transform: translateX(-50%) rotate(15deg);
+  z-index: 13;
+  bottom: 0px;
+}
+
+/// BOTTOM
+.playfield-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.shop-container, .deck-container {
+  border: 1px solid white;
+  height: 200px;
+  width: 300px;
+}

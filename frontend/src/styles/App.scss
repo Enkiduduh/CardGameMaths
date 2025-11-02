@@ -3,9 +3,11 @@
 @use "../pages/CardDisplay/cardDisplay";
 @use "../pages/Menu/menu";
 @use "../pages/Gameduel/gameduel";
+@use "../pages/GameduelV2/gameduelV2";
 //Components
 @use "../components/Dice/dice";
 @use "../components/Playfield/playfield";
+@use "../components/PlayfieldV2/playfieldV2";
 @use "../components/CardsList/cardsList";
 @use "../components/Card/card";
 @use "../components/Calculator/calculator";
