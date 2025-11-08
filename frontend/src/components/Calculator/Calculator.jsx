@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
-function Calculator() {
+function Calculator({ onGuessSubmit }) {
   const [screen, setScreen] = useState("");
+  const [guess, setGuess] = useState();
 
   const handleKey = (e) => {
     const target = e.target.textContent;
@@ -15,6 +16,28 @@ function Calculator() {
 
   const handleClear = () => {
     setScreen("");
+  };
+
+  const handValid = () => {
+    if (screen === "") {
+      console.log("Impossible de valider, aucune entrée n'a été effectuée.")
+      return;
+    }
+
+    const newGuess = parseFloat(screen);
+
+    if (isNaN(newGuess)){
+      console.log("Guess n'est pas une entrée conforme.");
+      return;
+    }
+
+    setGuess(newGuess);
+    console.log("New Guess :", newGuess);
+
+    if (onGuessSubmit) {
+      onGuessSubmit(newGuess);
+      setScreen("");
+    }
   };
 
   return (
@@ -61,7 +84,9 @@ function Calculator() {
         <div className="calculator-actions-key-container">
           <div className="calculator-screen">{screen}</div>
           <div className="calculator-actions-key">
-            <div className="calculator-action-key">Valider</div>
+            <div className="calculator-action-key" onClick={handValid}>
+              Valider
+            </div>
             <div className="calculator-action-key" onClick={handleSuppr}>
               Suppr
             </div>

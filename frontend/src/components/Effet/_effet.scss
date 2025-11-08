@@ -1,0 +1,35 @@
+.effet-item {
+  border: 3px solid white;
+  width: 80px;
+  height: 80px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    border: 3px solid yellow;
+    color: yellow;
+  }
+}
+.effet-item-name {
+  width: 80px;
+  height: 60px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkorchid;
+}
+
+.effet-item-effect {
+  width: 80px;
+  height: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: darkgray;
+
+}

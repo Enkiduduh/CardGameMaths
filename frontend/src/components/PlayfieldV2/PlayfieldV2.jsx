@@ -3,6 +3,7 @@ import { shuffle } from "../../logic/shuffle";
 import CardDisplay from "../../pages/CardDisplay/CardDisplay";
 import Card from "../Card/Card";
 import Calculator from "../Calculator/Calculator";
+import Effet from "../Effet/Effet";
 
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
@@ -13,9 +14,12 @@ function Playfield() {
   const [wastepile, setWastepile] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [lifePlayer, setLifePlayer] = useState(20);
   const [isDeckEmpty, setIsDeckEmpty] = useState(false);
   const [startGame, setStartGame] = useState(true);
+
+  const [playerGuess, setPlayerGuess] = useState(null);
+  const [lifePlayer, setLifePlayer] = useState(100);
+  const [lifeBoss, setLifeBoss] = useState(100);
 
   const [rightNb, setRightNb] = useState(0);
   const [leftNb, setLeftNb] = useState(0);
@@ -23,6 +27,7 @@ function Playfield() {
   // const [mathSymbol, setMathSymbol] = useState("");
   const [isAttributeDropped, setIsAttributeDropped] = useState(false);
   const symbolArr = ["+", "-", "x", "÷"];
+  const [newRound, setNewRound] = useState(true);
 
   // PLAYER STATS
   const [playerPoints, setPlayerPoints] = useState(0);
@@ -34,17 +39,20 @@ function Playfield() {
   });
 
   useEffect(() => {
-    const rand = Math.floor(Math.random() * 3);
-    setSymbol(symbolArr[rand]);
-    console.log(`Symbol is: ${symbol}`);
-    console.log(symbolArr[rand]);
-    if (symbol != "") {
-      setIsAttributeDropped(true);
+    if (newRound) {
+      const rand = Math.floor(Math.random() * 3);
+      setSymbol(symbolArr[rand]);
+      console.log(`Symbol is: ${symbol}`);
+      console.log(symbolArr[rand]);
+      if (symbol != "") {
+        setIsAttributeDropped(true);
+      }
     }
-  }, [symbol]);
+  }, [symbol, newRound]);
 
   useEffect(() => {
     if (isAttributeDropped) {
+      console.log("TESSSSSSST");
       if (symbol === "-") {
         const randomNbLeft = Math.floor(Math.random() * 50);
         const randomNbRight = Math.floor(Math.random() * 50);
@@ -61,8 +69,9 @@ function Playfield() {
         setRightNb(randomNbRight);
         setLeftNb(randomNbLeft);
       }
+      setNewRound(false);
     }
-  }, [isAttributeDropped]);
+  }, [isAttributeDropped, newRound]);
 
   useEffect(() => {
     fetch("/api/cards/deckready")
@@ -116,6 +125,20 @@ function Playfield() {
     setIsDeckEmpty(true);
   };
 
+  const handlePlayerGuess = (guess) => {
+    setPlayerGuess(guess);
+    console.log("Player guess:", guess);
+
+    if (calculateResult() === guess) {
+      console.log("Correct answer !");
+      setLifeBoss((prev) => prev - 10);
+    } else {
+      console.log("Wrong answer !");
+      setLifePlayer((prev) => prev - 10);
+    }
+    setNewRound(true);
+  };
+
   const calculateResult = () => {
     switch (symbol) {
       case "+":
@@ -141,12 +164,16 @@ function Playfield() {
   return (
     <div className="playfield-container">
       <div className="playfield-central-container">
-      <div className="playfield-character-container">
-        <div className="playfield-character-life-container">
-          <div className="playfield-character-life"></div>
+        {/* Player 1 */}
+        <div className="playfield-character-container">
+          <div className="playfield-character-life-container">
+            <div
+              className="playfield-character-life playfield-player-life"
+              style={{ width: `${lifePlayer}%` }}
+            ></div>
+          </div>
+          <div className="playfield-character-portrait"></div>
         </div>
-        <div className="playfield-character-portrait"></div>
-      </div>
         {isAttributeDropped ? (
           <div className="playfield-central-area pca-number">{leftNb}</div>
         ) : (
@@ -158,30 +185,35 @@ function Playfield() {
         ) : (
           <div className="playfield-central-area pca-number"></div>
         )}
-      <div className="playfield-character-container"></div>
+        <div className="playfield-character-container">
+          <div className="playfield-character-life-container">
+            <div
+              className="playfield-character-life playfield-foe-life"
+              style={{ width: `${lifeBoss}%` }}
+            ></div>
+          </div>
+          <div className="playfield-character-portrait"></div>
+        </div>
       </div>
       <div>
         {leftNb} {symbol} {rightNb} = {calculateResult()}
       </div>
 
       <div className="playfield-player-container">
-        {/* <div className="playfield-player player-area">
-          {hand &&
-            hand.map((card, id) => (
-              <div
-                key={id}
-                className={`playfield-player-card ppc-${id}`}
-                draggable
-                onDragStart={(e) => handleDragStart(e, card)}
-              >
-                <CardDisplay card_id={card.id} />
-              </div>
-            ))}
-        </div> */}
+        <div className="playfield-central-container">
+          <div className="playfield-central-items-container">
+            <Effet effectName="Dgt +10" effectState="Prêt" />
+            <Effet effectName="Dgt +20" effectState="Prêt" />
+            <Effet effectName="Dgt +30" effectState="Prêt" />
+            <div className="playfield-central-item"></div>
+            <div className="playfield-central-item"></div>
+            <div className="playfield-central-item"></div>
+          </div>
+        </div>
       </div>
       <section className="playfield-bottom">
         <div className="shop-container">SHOP</div>
-        <Calculator />
+        <Calculator onGuessSubmit={handlePlayerGuess} />
         <div className="deck-container">DECK</div>
       </section>
     </div>

@@ -8,7 +8,6 @@
   flex-direction: column;
 }
 
-
 //TOP
 .playfield-top-container {
   height: 100px;
@@ -68,8 +67,8 @@
 .playfield-player-decks-container {
   display: flex;
   justify-content: right;
-   flex-direction: column;
-   align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .playfield-player-objet-deck,
@@ -111,6 +110,8 @@
   font-weight: bolder;
 }
 
+////// Player
+///
 .playfield-character-container {
   width: 200px;
   height: 200px;
@@ -122,6 +123,23 @@
   align-items: center;
   background-color: darkgoldenrod;
 }
+
+.playfield-character-life-container {
+  border: 1px solid white;
+  width: 100px;
+  height: 20px;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.playfield-character-life {
+  height: 20px;
+  background-color: green;
+}
+
+///// Player
 
 ////CARDS.....
 .playfield-player-card {
@@ -136,13 +154,13 @@
 
 .ppc-0 {
   left: 20%;
-  transform: translateX(-50%) rotate(-20deg) ;
+  transform: translateX(-50%) rotate(-20deg);
   z-index: 6;
   bottom: 0px;
 }
 .ppc-1 {
   left: 30%;
-  transform: translateX(-50%) rotate(-20deg) ;
+  transform: translateX(-50%) rotate(-20deg);
   z-index: 7;
   bottom: 10px;
 }
@@ -191,8 +209,23 @@
   width: 100%;
 }
 
-.shop-container, .deck-container {
+.shop-container,
+.deck-container {
   border: 1px solid white;
   height: 200px;
   width: 300px;
+}
+
+//////
+.playfield-central-container {
+  width: 100%;
+  margin: 0 auto;
+}
+.playfield-central-items-container {
+  width: 700px;
+  background-color: purple;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
