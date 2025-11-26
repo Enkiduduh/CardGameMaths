@@ -426,6 +426,9 @@
 .playfield-character-life {
   height: 20px;
   background-color: green;
+  display: flex;
+  align-items: center;
+  color: black;
 }
 
 .playfield-player-card {
@@ -515,11 +518,18 @@
 
 .playfield-central-items-container {
   width: 700px;
-  background-color: purple;
   height: 200px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.shop-container {
+  display: flex;
+}
+
+.shop-container-effects {
+  display: flex;
 }
 
 .cardslist-container {
@@ -611,10 +621,6 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-}
-.effet-item:hover {
-  border: 3px solid yellow;
-  color: yellow;
 }
 
 .effet-item-name {

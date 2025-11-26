@@ -31,12 +31,65 @@ function Playfield() {
 
   // PLAYER STATS
   const [playerPoints, setPlayerPoints] = useState(0);
-  const [playerCrystals, setPlayerCrystals] = useState(0);
-
+  const [playerCanBuy, setPlayerCanBuy] = useState(false);
+  const [playerTurns, setPlayerTurns] = useState(0);
   // États pour les cartes jouées
   const [playedCards, setPlayedCards] = useState({
     1: null, // case 1
   });
+  const [newRoundEffect, setNewRoundEffect] = useState(true);
+  const [playerEffects, setPlayerEffects] = useState([
+    { id: 1, name: "Dégat +10", state: "Prêt", damage: 10, used: false },
+    { id: 2, name: "Dégat +20", state: "Prêt", damage: 20, used: false },
+    { id: 3, name: "Dégat +30", state: "Prêt", damage: 30, used: false },
+  ]);
+
+  const [shopEffects, setShopEffects] = useState([
+    { id: 4, name: "Dégat +40", state: "Prêt", damage: 40, used: false },
+    { id: 5, name: "Soin +15", state: "Prêt", heal: 15, used: false },
+    { id: 6, name: "Bouclier", state: "Prêt", protection: true, used: false },
+  ]);
+
+  //Fonction pour transférer un effet du shop au joueur
+  const buyEffect = (effectId) => {
+    if (playerTurns === 3 || playerTurns === 6 || playerTurns === 9) {
+      const effect = shopEffects.find((e) => e.id === effectId);
+      playerEffects.push(effect);
+      setShopEffects(shopEffects.filter((e) => e.id != effectId));
+      console.log("Achat");
+      setPlayerCanBuy(false);
+    }
+  };
+
+  // Fonction pour activer un effet
+  const activateEffect = (effectId) => {
+    const effect = playerEffects.find((e) => e.id === effectId);
+    if (newRoundEffect) {
+      if (!effect || effect.used) {
+        console.log("Effet déjà utilisé ou inexistant");
+        return;
+      }
+      // Appliquer l'effet
+      if (effect.damage) {
+        setLifeBoss((prev) => Math.max(0, prev - effect.damage));
+        console.log(`Dégâts infligés: ${effect.damage}`);
+        setNewRoundEffect(false);
+      }
+
+      if (effect.heal) {
+        setLifePlayer((prev) => Math.min(100, prev + effect.heal));
+        console.log(`Soins reçus: ${effect.heal}`);
+        setNewRoundEffect(false);
+      }
+
+      // Marquer l'effet comme utilisé
+      setPlayerEffects((prev) =>
+        prev.map((e) =>
+          e.id === effectId ? { ...e, used: true, state: "Utilisé" } : e
+        )
+      );
+    }
+  };
 
   useEffect(() => {
     if (newRound) {
@@ -136,7 +189,15 @@ function Playfield() {
       console.log("Wrong answer !");
       setLifePlayer((prev) => prev - 10);
     }
+    console.log("Player turn:", playerTurns);
     setNewRound(true);
+    setNewRoundEffect(true);
+    setPlayerTurns((prev) => prev + 1);
+    if (playerTurns === 2 || playerTurns === 5 || playerTurns === 8) {
+      setPlayerCanBuy(true);
+    } else {
+      setPlayerCanBuy(false);
+    }
   };
 
   const calculateResult = () => {
@@ -190,7 +251,9 @@ function Playfield() {
             <div
               className="playfield-character-life playfield-foe-life"
               style={{ width: `${lifeBoss}%` }}
-            ></div>
+            >
+              {lifeBoss}
+            </div>
           </div>
           <div className="playfield-character-portrait"></div>
         </div>
@@ -202,19 +265,41 @@ function Playfield() {
       <div className="playfield-player-container">
         <div className="playfield-central-container">
           <div className="playfield-central-items-container">
-            <Effet effectName="Dgt +10" effectState="Prêt" />
-            <Effet effectName="Dgt +20" effectState="Prêt" />
-            <Effet effectName="Dgt +30" effectState="Prêt" />
-            <div className="playfield-central-item"></div>
-            <div className="playfield-central-item"></div>
-            <div className="playfield-central-item"></div>
+            {playerEffects.map((effect) => (
+              <Effet
+                key={effect.id}
+                effectName={effect.name}
+                effectState={effect.used ? "Utilisé" : effect.state}
+                isDisabled={effect.used}
+                onClick={() => activateEffect(effect.id)}
+              />
+            ))}
           </div>
         </div>
       </div>
       <section className="playfield-bottom">
-        <div className="shop-container">SHOP</div>
+        <div className="shop-container">
+          <div>
+            {playerCanBuy ? (
+              <>
+                <div>Boutique ouverte</div>
+                <div className="shop-container-effects">
+                  {shopEffects.map((effect) => (
+                    <Effet
+                      key={effect.id}
+                      effectName={effect.name}
+                      onClick={() => buyEffect(effect.id)}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <div>Boutique fermée</div>
+            )}
+          </div>
+        </div>
         <Calculator onGuessSubmit={handlePlayerGuess} />
-        <div className="deck-container">DECK</div>
+        <div className="deck-container">Tour du joueur : {playerTurns}</div>
       </section>
     </div>
   );

@@ -137,6 +137,9 @@
 .playfield-character-life {
   height: 20px;
   background-color: green;
+  display: flex;
+  align-items: center;
+  color: black;
 }
 
 ///// Player
@@ -223,9 +226,17 @@
 }
 .playfield-central-items-container {
   width: 700px;
-  background-color: purple;
+  // background-color: purple;
   height: 200px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.shop-container {
+  display : flex;
+}
+.shop-container-effects {
+    display : flex;
+
 }
