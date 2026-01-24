@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Effet({ effectName, effectState, isDisabled, onClick }) {
+function Effet({ effectName, effectState, isDisabled, onClick, isShopOpened }) {
   const [selected, setSelected] = useState(false);
 
   const handleClick = () => {
@@ -19,6 +19,8 @@ function Effet({ effectName, effectState, isDisabled, onClick }) {
       style={{
         opacity: isDisabled ? 0.5 : 1,
         cursor: isDisabled ? "not-allowed" : "pointer",
+        transform: isShopOpened ? "scale(0.8)" : "scale(1)",
+        margin: isShopOpened ? "10px" : "5px"
       }}
     >
       <div className="effet-item-name">{effectName}</div>

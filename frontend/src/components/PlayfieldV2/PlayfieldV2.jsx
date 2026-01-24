@@ -4,6 +4,8 @@ import CardDisplay from "../../pages/CardDisplay/CardDisplay";
 import Card from "../Card/Card";
 import Calculator from "../Calculator/Calculator";
 import Effet from "../Effet/Effet";
+import Portrait_player from "../../../public/assets/PORTRAIT-OSCAR.png";
+import Portrait_boss from "../../../public/assets/PORTRAIT-MULTIPLIGATOR.png";
 
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
@@ -42,12 +44,14 @@ function Playfield() {
     { id: 1, name: "Dégat +10", state: "Prêt", damage: 10, used: false },
     { id: 2, name: "Dégat +20", state: "Prêt", damage: 20, used: false },
     { id: 3, name: "Dégat +30", state: "Prêt", damage: 30, used: false },
+    { id: 4, name: "Dégat +30", state: "Prêt", damage: 30, used: false },
   ]);
 
   const [shopEffects, setShopEffects] = useState([
-    { id: 4, name: "Dégat +40", state: "Prêt", damage: 40, used: false },
-    { id: 5, name: "Soin +15", state: "Prêt", heal: 15, used: false },
-    { id: 6, name: "Bouclier", state: "Prêt", protection: true, used: false },
+    { id: 5, name: "Dégat +40", state: "Prêt", damage: 40, used: false },
+    { id: 6, name: "Soin +15", state: "Prêt", heal: 15, used: false },
+    { id: 7, name: "Bouclier", state: "Prêt", protection: true, used: false },
+    { id: 8, name: "Bouclier", state: "Prêt", protection: true, used: false }
   ]);
 
   //Fonction pour transférer un effet du shop au joueur
@@ -174,6 +178,51 @@ function Playfield() {
     }
   });
 
+  const calculateTurnToOpenShop = (n) => {
+    let nbTourOuverture = 0;
+    switch (n) {
+      case 1:
+        nbTourOuverture = 2;
+        break;
+      case 2:
+        nbTourOuverture = 1;
+        break;
+      case 3:
+        nbTourOuverture = 3;
+        break;
+      case 4:
+        nbTourOuverture = 2;
+        break;
+      case 5:
+        nbTourOuverture = 1;
+        break;
+      case 6:
+        nbTourOuverture = 3;
+        break;
+      case 7:
+        nbTourOuverture = 2;
+        break;
+      case 8:
+        nbTourOuverture = 1;
+        break;
+      case 9:
+        nbTourOuverture = 3;
+        break;
+      case 10:
+        nbTourOuverture = 3;
+        break;
+      case 11:
+        nbTourOuverture = 3;
+        break;
+      case 12:
+        nbTourOuverture = 3;
+        break;
+      default:
+        break;
+    }
+    return nbTourOuverture;
+  };
+
   const addCardDeck = () => {
     setIsDeckEmpty(true);
   };
@@ -226,27 +275,49 @@ function Playfield() {
     <div className="playfield-container">
       <div className="playfield-central-container">
         {/* Player 1 */}
-        <div className="playfield-character-container">
+        <div className="playfield-character-container pcc-player">
+          <div className="playfield-character-portrait">
+            <img
+              src={Portrait_player}
+              alt=""
+              className="playfield-character-portrait-img"
+            />
+          </div>
           <div className="playfield-character-life-container">
             <div
               className="playfield-character-life playfield-player-life"
               style={{ width: `${lifePlayer}%` }}
-            ></div>
+            >
+              {lifePlayer}
+            </div>
           </div>
-          <div className="playfield-character-portrait"></div>
         </div>
-        {isAttributeDropped ? (
-          <div className="playfield-central-area pca-number">{leftNb}</div>
-        ) : (
-          <div className="playfield-central-area pca-number"></div>
-        )}
-        <div className="playfield-central-area pca-actionV2">{symbol}</div>
-        {isAttributeDropped ? (
-          <div className="playfield-central-area pca-number">{rightNb}</div>
-        ) : (
-          <div className="playfield-central-area pca-number"></div>
-        )}
-        <div className="playfield-character-container">
+        <div className="playfield-central-area-container">
+          {isAttributeDropped ? (
+            <div className="playfield-central-area pca-number pca-left">
+              {leftNb}
+            </div>
+          ) : (
+            <div className="playfield-central-area pca-number"></div>
+          )}
+          <div className="pca-actionV2">{symbol}</div>
+          {isAttributeDropped ? (
+            <div className="playfield-central-area pca-number pca-right">
+              {rightNb}
+            </div>
+          ) : (
+            <div className="playfield-central-area pca-number"></div>
+          )}
+        </div>
+
+        <div className="playfield-character-container pcc-foe">
+          <div className="playfield-character-portrait">
+            <img
+              src={Portrait_boss}
+              alt=""
+              className="playfield-character-portrait-img"
+            />
+          </div>
           <div className="playfield-character-life-container">
             <div
               className="playfield-character-life playfield-foe-life"
@@ -255,15 +326,49 @@ function Playfield() {
               {lifeBoss}
             </div>
           </div>
-          <div className="playfield-character-portrait"></div>
         </div>
       </div>
       <div>
-        {leftNb} {symbol} {rightNb} = {calculateResult()}
+        {leftNb} {symbol} {rightNb} = {calculateResult()} [Tour de jeu :{" "}
+        {playerTurns}]
       </div>
 
-      <div className="playfield-player-container">
-        <div className="playfield-central-container">
+      <section className="playfield-bottom">
+        {playerCanBuy ? (
+          <div className="shop-container">
+            <div>Boutique ouverte</div>
+          </div>
+        ) : null}
+
+        {playerCanBuy ? (
+          <div className="shop-container-open">
+            <div className="shop-title">Choisis un trésor à récupérer</div>
+            <div className="shop-container-effects">
+              {shopEffects.map((effect) => (
+                <Effet
+                  key={effect.id}
+                  effectName={effect.name}
+                  onClick={() => buyEffect(effect.id)}
+                  isShopOpened={playerCanBuy}
+                />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="shop-container">
+            {playerTurns == 0 ? (
+              <div>Ouverture dans 3 tours</div>
+            ) : (
+              <div>
+                Ouverture dans {calculateTurnToOpenShop(playerTurns)} tours
+              </div>
+            )}
+            {/* <div>Ouverture au tour 3, 6 et 9.</div> */}
+          </div>
+        )}
+
+        <Calculator onGuessSubmit={handlePlayerGuess} />
+        <div className="deck-container">
           <div className="playfield-central-items-container">
             {playerEffects.map((effect) => (
               <Effet
@@ -276,30 +381,6 @@ function Playfield() {
             ))}
           </div>
         </div>
-      </div>
-      <section className="playfield-bottom">
-        <div className="shop-container">
-          <div>
-            {playerCanBuy ? (
-              <>
-                <div>Boutique ouverte</div>
-                <div className="shop-container-effects">
-                  {shopEffects.map((effect) => (
-                    <Effet
-                      key={effect.id}
-                      effectName={effect.name}
-                      onClick={() => buyEffect(effect.id)}
-                    />
-                  ))}
-                </div>
-              </>
-            ) : (
-              <div>Boutique fermée</div>
-            )}
-          </div>
-        </div>
-        <Calculator onGuessSubmit={handlePlayerGuess} />
-        <div className="deck-container">Tour du joueur : {playerTurns}</div>
       </section>
     </div>
   );

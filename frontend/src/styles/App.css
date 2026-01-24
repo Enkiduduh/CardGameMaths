@@ -297,8 +297,8 @@
 }
 
 .playfield-container {
-  width: 90vw;
-  height: 95vh;
+  width: 99vw;
+  height: 99vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -334,14 +334,10 @@
 }
 
 .playfield-player-container {
-  width: 90vw;
-  height: 30vh;
+  width: 100%;
+  height: 49vh;
   display: flex;
   justify-content: space-between;
-}
-
-.playfield-player {
-  height: 30vh;
 }
 
 .player-area {
@@ -350,10 +346,6 @@
   justify-content: space-between;
   position: relative;
   bottom: -80px;
-}
-
-.pca-actionV2 {
-  font-size: 100px;
 }
 
 .playfield-player-decks-container {
@@ -378,46 +370,95 @@
 }
 
 .playfield-central-container {
-  width: 50vw;
-  height: 30vh;
+  display: flex;
+  justify-content: center;
+}
+
+.playfield-central-area-container {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  border: 5px solid #662808;
+  padding: 15px 25px;
+  width: 35vw;
+  height: 40vh;
+  background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
+  background-repeat: no-repeat;
+  background-size: 41vw 46vh;
+  background-position: center;
 }
 
 .playfield-central-area {
-  width: 120px;
-  height: 160px;
+  width: 10vw;
+  height: 10vh;
   padding: 20px;
-  border: 7px solid white;
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: darkgoldenrod;
+  background-color: #f3e2bf;
+}
+
+.pca-left {
+  border: 7px solid #f2345b;
+  color: #f2345b;
+}
+
+.pca-right {
+  border: 7px solid #69ca00;
+  color: #69ca00;
 }
 
 .pca-number {
-  font-size: 120px;
+  font-size: 60px;
   font-weight: bolder;
 }
 
-.playfield-character-container {
+.pca-actionV2 {
+  font-size: 120px;
+}
+
+.playfield-character-portrait {
   width: 200px;
   height: 200px;
+  margin-top: 10px;
+}
+
+.playfield-character-portrait-img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.playfield-character-container {
+  width: 20vw;
+  height: 40vh;
   padding: 20px;
-  border: 7px solid white;
-  border-radius: 25px;
+  border: 3px solid #662808;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background-color: darkgoldenrod;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.pcc-player {
+  background-image: url("../../../public/assets/BLOC-HERO.png");
+}
+
+.pcc-foe {
+  background-image: url("../../../public/assets/BLOC-BOSS.png");
 }
 
 .playfield-character-life-container {
-  border: 1px solid white;
+  border: 3px solid #662808;
   width: 100px;
   height: 20px;
-  background-color: lightgrey;
+  border-radius: 20px;
+  background-color: #eab868;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -425,7 +466,8 @@
 
 .playfield-character-life {
   height: 20px;
-  background-color: green;
+  border-radius: 20px;
+  background-color: #53f453;
   display: flex;
   align-items: center;
   color: black;
@@ -441,74 +483,69 @@
   transform: rotate(0deg) translateX(-50%);
 }
 
-.ppc-0 {
-  left: 20%;
-  transform: translateX(-50%) rotate(-20deg);
-  z-index: 6;
-  bottom: 0px;
-}
-
-.ppc-1 {
-  left: 30%;
-  transform: translateX(-50%) rotate(-20deg);
-  z-index: 7;
-  bottom: 10px;
-}
-
-.ppc-2 {
-  left: 40%;
-  transform: translateX(-50%) rotate(-15deg);
-  z-index: 8;
-  bottom: 20px;
-}
-
-.ppc-3 {
-  left: 50%;
-  transform: translateX(-50%) rotate(-10deg);
-  z-index: 9;
-  bottom: 30px;
-}
-
-.ppc-4 {
-  left: 60%;
-  transform: translateX(-50%) rotate(0deg);
-  z-index: 10;
-  bottom: 30px;
-}
-
-.ppc-5 {
-  left: 70%;
-  transform: translateX(-50%) rotate(10deg);
-  z-index: 11;
-  bottom: 20px;
-}
-
-.ppc-6 {
-  left: 80%;
-  transform: translateX(-50%) rotate(15deg);
-  z-index: 12;
-  bottom: 10px;
-}
-
-.ppc-7 {
-  left: 90%;
-  transform: translateX(-50%) rotate(15deg);
-  z-index: 13;
-  bottom: 0px;
-}
-
 .playfield-bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
+  height: 50vh;
 }
 
 .shop-container,
 .deck-container {
   border: 1px solid white;
-  height: 200px;
+  height: 100%;
   width: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.shop-container {
+  background-image: url("../../../public/assets/BLOC-COFFRE.png");
+  background-position: left;
+}
+
+.deck-container {
+  background-image: url("../../../public/assets/BLOC-STOCKAGE-BONUS.png");
+  background-position: right;
+}
+
+.shop-container-open {
+  width: 45vw;
+  height: 60vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background-image: url("../../../public/assets/FENETRE-SELECTION-BONUS.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.shop-title {
+  font-size: 24px;
+  font-weight: bolder;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.shop-container-effects {
+  display: flex;
+  transform: scale(2);
+  position: absolute;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .playfield-central-container {
@@ -517,19 +554,8 @@
 }
 
 .playfield-central-items-container {
-  width: 700px;
-  height: 200px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.shop-container {
-  display: flex;
-}
-
-.shop-container-effects {
-  display: flex;
+  flex-wrap: wrap;
 }
 
 .cardslist-container {
@@ -562,53 +588,90 @@
   margin: 0 2px;
 }
 
+.calculator-container-ext {
+  background-color: #a2e538;
+  border: 5px solid #662808;
+  padding: 15px 25px;
+  width: 35vw;
+}
+
 .calculator-screen {
-  border: 3px solid white;
+  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 36px;
+  padding: 15px 36px;
   height: 30px;
   margin: 2px;
-  font-size: 36px;
+  font-size: 50px;
+  border-radius: 40px;
+  background-color: #baebf4;
+  border: 5px solid #5e5a5b;
+  color: black;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bolder;
 }
 
 .calculator-key-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .calculator-key {
-  border: 3px solid white;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  margin: 2px;
+  padding: 0 5px 0 5px;
+  margin: 4px;
+  font-size: 32px;
+  height: 40px;
+  width: 40px;
+  background-color: #65009b;
+  border: 1px solid #3e2387;
+}
+
+.calculator-key-img {
+  width: 50px;
 }
 
 .calculator-actions-key-container {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
 .calculator-actions-key {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .calculator-container {
   display: flex;
+  flex-direction: column;
 }
 
 .calculator-action-key {
-  border: 3px solid white;
+  border: 3px solid #3e2387;
   display: flex;
   justify-content: center;
+  border-radius: 8px;
   align-items: center;
-  margin: 2px;
-  padding: 30px 10px;
+  margin: 4px;
+  padding: 0px 10px;
   cursor: pointer;
+  font-size: 30px;
+  color: white;
+  font-family: "helvetica";
+}
+
+.cak-valider {
+  background-color: #13d8c0;
+}
+
+.cak-corriger {
+  background-color: #ea1c31;
 }
 
 .effet-item {

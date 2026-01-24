@@ -1,50 +1,93 @@
+.calculator-container-ext {
+  // Couleur intérieur
+  background-color: #a2e538;
+  // Couleur cadre interieur
+  border: 5px solid #662808;
+  padding: 15px 25px;
+  width: 35vw;
+}
+
 .calculator-screen {
-  border: 3px solid white;
+  border: 1px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 36px;
+  padding: 15px 36px;
   height: 30px;
   margin: 2px;
-  font-size: 36px;
-
+  font-size: 50px;
+  border-radius: 40px;
+  // Couleur intérieur
+  background-color: #baebf4;
+  // Couleur cadre interieur
+  border: 5px solid #5e5a5b;
+  // Couleur ecrirture noir
+  color: black;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bolder;
 }
 
 .calculator-key-container {
-  display :grid;
-  grid-template-columns: repeat(3, 1fr);
-
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .calculator-key {
-  border: 3px solid white;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:10px;
-  margin: 2px;
+  padding: 0 5px 0 5px;
+  margin: 4px;
+  font-size: 32px;
+  height: 40px;
+  width: 40px;
+  // Couleur intérieur
+  background-color: #65009b;
+  // Couleur extérieur
+  border: 1px solid #3e2387;
 }
+
+.calculator-key-img {
+  width: 50px;
+}
+
 .calculator-actions-key-container {
-  display : flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .calculator-actions-key {
-  display : flex;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .calculator-container {
-  display : flex;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .calculator-action-key {
-  border: 3px solid white;
+  border: 3px solid #3e2387;
   display: flex;
   justify-content: center;
+  border-radius: 8px;
   align-items: center;
-  margin: 2px;
-  padding: 30px 10px;
+  margin: 4px;
+  padding: 0px 10px;
   cursor: pointer;
+  font-size: 30px;
+  color: white;
+  font-family: 'helvetica';
+
+}
+
+.cak-valider {
+background-color: #13d8c0;
+}
+
+.cak-corriger {
+background-color: #ea1c31;
+
 }

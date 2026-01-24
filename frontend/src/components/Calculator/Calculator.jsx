@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import img_suppr from "../../../public/assets/supprimer.png";
 function Calculator({ onGuessSubmit }) {
   const [screen, setScreen] = useState("");
   const [guess, setGuess] = useState();
@@ -20,13 +20,13 @@ function Calculator({ onGuessSubmit }) {
 
   const handValid = () => {
     if (screen === "") {
-      console.log("Impossible de valider, aucune entrée n'a été effectuée.")
+      console.log("Impossible de valider, aucune entrée n'a été effectuée.");
       return;
     }
 
     const newGuess = parseFloat(screen);
 
-    if (isNaN(newGuess)){
+    if (isNaN(newGuess)) {
       console.log("Guess n'est pas une entrée conforme.");
       return;
     }
@@ -41,7 +41,8 @@ function Calculator({ onGuessSubmit }) {
   };
 
   return (
-    <div>
+    <div className="calculator-container-ext">
+      <div className="calculator-screen">{screen}</div>
       <div className="calculator-container">
         <div className="calculator-key-container">
           <div className="calculator-key" onClick={handleKey}>
@@ -82,16 +83,12 @@ function Calculator({ onGuessSubmit }) {
           </div>
         </div>
         <div className="calculator-actions-key-container">
-          <div className="calculator-screen">{screen}</div>
           <div className="calculator-actions-key">
-            <div className="calculator-action-key" onClick={handValid}>
+            <div className="calculator-action-key cak-valider" onClick={handValid}>
               Valider
             </div>
-            <div className="calculator-action-key" onClick={handleSuppr}>
-              Suppr
-            </div>
-            <div className="calculator-action-key" onClick={handleClear}>
-              Clear
+            <div className="calculator-action-key cak-corriger" onClick={handleClear}>
+              Corriger
             </div>
           </div>
         </div>
