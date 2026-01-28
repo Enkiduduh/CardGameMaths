@@ -15,96 +15,45 @@
   background-color: red;
 }
 
-///ADVERSARY....
-.playfield-adversary-container {
-  width: 80vw;
-  height: 30vh;
-  border: 1px solid white;
-  display: flex;
-}
-
-.playfield-adversary {
-  border: 1px solid white;
-  height: 30vh;
-}
-.adversary-area {
-  border: 1px solid white;
-  width: 60vw;
-}
-.adversary-deck {
-  border: 1px solid white;
-  width: 20vw;
-}
-
-////PLAYER....
-
-.playfield-player-container {
-  width: 100%;
-  height: 49vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-.playfield-player {
-  // height: 30vh;
-}
-.player-area {
-  width: 80vw;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  bottom: -80px;
-}
-
-.playfield-player-decks-container {
-  display: flex;
-  justify-content: right;
-  flex-direction: column;
-  align-items: center;
-}
-
-.playfield-player-objet-deck,
-.playfield-player-objet-wastepile {
-  border: 3px solid white;
-  font-size: 24px;
-  width: 100px;
-  height: 130px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 2px;
-}
-
 /////CENTRAL...
-.playfield-central-container {
-  display: flex;
-  justify-content: center;
-}
+// .playfield-central-container {
+//   display: flex;
+//   justify-content: center;
+// }
 
 .playfield-central-area-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   border: 5px solid #662808;
-  padding: 15px 25px;
-  width: 35vw;
-  height: 40vh;
+  width: 50%;
+  height: 49vh;
   background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
   background-repeat: no-repeat;
-  background-size: 41vw 46vh;
+  background-size: 47vw 49vh;
   background-position: center;
+  z-index: 5;
+  position: relative;
 }
 .playfield-central-area {
   width: 10vw;
   height: 10vh;
   padding: 20px;
+  margin: 0 3vw;
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f3e2bf;
+}
+
+.playfield-central-area-chrono {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vw;
 }
 .pca-left {
   border: 7px solid #f2345b;
@@ -120,8 +69,8 @@
   font-weight: bolder;
 }
 .pca-actionV2 {
-  font-size: 120px;
-}
+  font-size: 100px;
+ }
 
 ////// Player
 ///
@@ -139,10 +88,10 @@
 }
 
 .playfield-character-container {
-  width: 20vw;
-  height: 40vh;
+  width: 25%;
+  height: 44vh;
   padding: 20px;
-  border: 3px solid #662808;
+  border: 5px solid #662808;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -153,20 +102,25 @@
 }
 .pcc-player {
   background-image: url("../../../public/assets/BLOC-HERO.png");
+    background-position: left;
+
 }
 .pcc-foe {
   background-image: url("../../../public/assets/BLOC-BOSS.png");
+    background-position: right;
+
 }
 
 .playfield-character-life-container {
-  border: 3px solid #662808;
-  width: 100px;
+  border: 4px solid #a09f9f;
+  width: 14vw;
   height: 20px;
   border-radius: 20px;
-  background-color: #eab868;
+  background-color: #d6d8d6;
   display: flex;
   justify-content: left;
   align-items: center;
+  margin-top: 10px;
 }
 
 .playfield-character-life {
@@ -176,6 +130,11 @@
   display: flex;
   align-items: center;
   color: black;
+}
+.playfield-character-life-count {
+  color: black;
+  font-weight: 900;
+  font-family: Arial;
 }
 
 ///// Player
@@ -194,19 +153,20 @@
 /// BOTTOM
 .playfield-bottom {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50vh;
+  // height: 50vh;
 }
 
 .shop-container,
 .deck-container {
-  border: 1px solid white;
-  height: 100%;
-  width: 300px;
+  height: 43vh;
+  width: 25%;
+  padding: 20px;
   background-repeat: no-repeat;
   background-size: cover;
+  border: 5px solid #662808;
 }
 
 .shop-container {
@@ -257,8 +217,8 @@
 
 //////
 .playfield-central-container {
-  width: 100%;
-  margin: 0 auto;
+  width: 99vw;
+  height: 49vh;
 }
 .playfield-central-items-container {
   display: flex;

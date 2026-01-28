@@ -42,53 +42,61 @@ function Calculator({ onGuessSubmit }) {
 
   return (
     <div className="calculator-container-ext">
-      <div className="calculator-screen">{screen}</div>
+      <div className="calculator-screen-container">
+        <div className="calculator-screen">{screen}</div>
+      </div>
       <div className="calculator-container">
         <div className="calculator-key-container">
           <div className="calculator-key" onClick={handleKey}>
-            1
+            <div className="calculator-key-box">1</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            2
+            <div className="calculator-key-box">2</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            3
+            <div className="calculator-key-box">3</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            4
+            <div className="calculator-key-box">4</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            5
+            <div className="calculator-key-box">5</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            6
+            <div className="calculator-key-box">6</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            7
+            <div className="calculator-key-box">7</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            8
+            <div className="calculator-key-box">8</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            9
+            <div className="calculator-key-box">9</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            0
+            <div className="calculator-key-box">0</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            00
+            <div className="calculator-key-box">00</div>
           </div>
           <div className="calculator-key" onClick={handleKey}>
-            .
+            <div className="calculator-key-box">.</div>
           </div>
         </div>
         <div className="calculator-actions-key-container">
           <div className="calculator-actions-key">
-            <div className="calculator-action-key cak-valider" onClick={handValid}>
-              Valider
+            <div
+              className="calculator-action-key cak-valider"
+              onClick={handValid}
+            >
+              <div className="calculator-action-key-box">Valider</div>
             </div>
-            <div className="calculator-action-key cak-corriger" onClick={handleClear}>
-              Corriger
+            <div
+              className="calculator-action-key cak-corriger"
+              onClick={handleClear}
+            >
+              <div className="calculator-action-key-box">Corriger</div>
             </div>
           </div>
         </div>

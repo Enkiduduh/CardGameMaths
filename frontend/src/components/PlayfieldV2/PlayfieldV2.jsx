@@ -6,6 +6,7 @@ import Calculator from "../Calculator/Calculator";
 import Effet from "../Effet/Effet";
 import Portrait_player from "../../../public/assets/PORTRAIT-OSCAR.png";
 import Portrait_boss from "../../../public/assets/PORTRAIT-MULTIPLIGATOR.png";
+import Chrono_img from "../../../public/assets/BLOC-CHRONO.png";
 
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
@@ -51,7 +52,7 @@ function Playfield() {
     { id: 5, name: "Dégat +40", state: "Prêt", damage: 40, used: false },
     { id: 6, name: "Soin +15", state: "Prêt", heal: 15, used: false },
     { id: 7, name: "Bouclier", state: "Prêt", protection: true, used: false },
-    { id: 8, name: "Bouclier", state: "Prêt", protection: true, used: false }
+    { id: 8, name: "Bouclier", state: "Prêt", protection: true, used: false },
   ]);
 
   //Fonction pour transférer un effet du shop au joueur
@@ -89,8 +90,8 @@ function Playfield() {
       // Marquer l'effet comme utilisé
       setPlayerEffects((prev) =>
         prev.map((e) =>
-          e.id === effectId ? { ...e, used: true, state: "Utilisé" } : e
-        )
+          e.id === effectId ? { ...e, used: true, state: "Utilisé" } : e,
+        ),
       );
     }
   };
@@ -287,12 +288,16 @@ function Playfield() {
             <div
               className="playfield-character-life playfield-player-life"
               style={{ width: `${lifePlayer}%` }}
-            >
-              {lifePlayer}
-            </div>
+            ></div>
+          </div>
+          <div class="playfield-character-life-count">
+            {lifePlayer} / 100 PV
           </div>
         </div>
         <div className="playfield-central-area-container">
+          <div>
+            <img src={Chrono_img} alt="" class="playfield-central-area-chrono"/>
+          </div>
           {isAttributeDropped ? (
             <div className="playfield-central-area pca-number pca-left">
               {leftNb}
@@ -322,16 +327,17 @@ function Playfield() {
             <div
               className="playfield-character-life playfield-foe-life"
               style={{ width: `${lifeBoss}%` }}
-            >
-              {lifeBoss}
-            </div>
+            ></div>
+          </div>
+          <div class="playfield-character-life-count">
+            {lifePlayer} / 100 PV
           </div>
         </div>
       </div>
-      <div>
+      {/* <div>
         {leftNb} {symbol} {rightNb} = {calculateResult()} [Tour de jeu :{" "}
         {playerTurns}]
-      </div>
+      </div> */}
 
       <section className="playfield-bottom">
         {playerCanBuy ? (

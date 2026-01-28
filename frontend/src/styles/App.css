@@ -311,92 +311,40 @@
   background-color: red;
 }
 
-.playfield-adversary-container {
-  width: 80vw;
-  height: 30vh;
-  border: 1px solid white;
-  display: flex;
-}
-
-.playfield-adversary {
-  border: 1px solid white;
-  height: 30vh;
-}
-
-.adversary-area {
-  border: 1px solid white;
-  width: 60vw;
-}
-
-.adversary-deck {
-  border: 1px solid white;
-  width: 20vw;
-}
-
-.playfield-player-container {
-  width: 100%;
-  height: 49vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-.player-area {
-  width: 80vw;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  bottom: -80px;
-}
-
-.playfield-player-decks-container {
-  display: flex;
-  justify-content: right;
-  flex-direction: column;
-  align-items: center;
-}
-
-.playfield-player-objet-deck,
-.playfield-player-objet-wastepile {
-  border: 3px solid white;
-  font-size: 24px;
-  width: 100px;
-  height: 130px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 0 2px;
-}
-
-.playfield-central-container {
-  display: flex;
-  justify-content: center;
-}
-
 .playfield-central-area-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   border: 5px solid #662808;
-  padding: 15px 25px;
-  width: 35vw;
-  height: 40vh;
+  width: 50%;
+  height: 49vh;
   background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
   background-repeat: no-repeat;
-  background-size: 41vw 46vh;
+  background-size: 47vw 49vh;
   background-position: center;
+  z-index: 5;
+  position: relative;
 }
 
 .playfield-central-area {
   width: 10vw;
   height: 10vh;
   padding: 20px;
+  margin: 0 3vw;
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f3e2bf;
+}
+
+.playfield-central-area-chrono {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vw;
 }
 
 .pca-left {
@@ -415,7 +363,7 @@
 }
 
 .pca-actionV2 {
-  font-size: 120px;
+  font-size: 100px;
 }
 
 .playfield-character-portrait {
@@ -432,10 +380,10 @@
 }
 
 .playfield-character-container {
-  width: 20vw;
-  height: 40vh;
+  width: 25%;
+  height: 44vh;
   padding: 20px;
-  border: 3px solid #662808;
+  border: 5px solid #662808;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -447,21 +395,24 @@
 
 .pcc-player {
   background-image: url("../../../public/assets/BLOC-HERO.png");
+  background-position: left;
 }
 
 .pcc-foe {
   background-image: url("../../../public/assets/BLOC-BOSS.png");
+  background-position: right;
 }
 
 .playfield-character-life-container {
-  border: 3px solid #662808;
-  width: 100px;
+  border: 4px solid #a09f9f;
+  width: 14vw;
   height: 20px;
   border-radius: 20px;
-  background-color: #eab868;
+  background-color: #d6d8d6;
   display: flex;
   justify-content: left;
   align-items: center;
+  margin-top: 10px;
 }
 
 .playfield-character-life {
@@ -471,6 +422,12 @@
   display: flex;
   align-items: center;
   color: black;
+}
+
+.playfield-character-life-count {
+  color: black;
+  font-weight: 900;
+  font-family: Arial;
 }
 
 .playfield-player-card {
@@ -485,19 +442,19 @@
 
 .playfield-bottom {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 50vh;
 }
 
 .shop-container,
 .deck-container {
-  border: 1px solid white;
-  height: 100%;
-  width: 300px;
+  height: 43vh;
+  width: 25%;
+  padding: 20px;
   background-repeat: no-repeat;
   background-size: cover;
+  border: 5px solid #662808;
 }
 
 .shop-container {
@@ -549,8 +506,8 @@
 }
 
 .playfield-central-container {
-  width: 100%;
-  margin: 0 auto;
+  width: 99vw;
+  height: 49vh;
 }
 
 .playfield-central-items-container {
@@ -591,22 +548,36 @@
 .calculator-container-ext {
   background-color: #a2e538;
   border: 5px solid #662808;
-  padding: 15px 25px;
-  width: 35vw;
+  width: 50%;
+  height: 49vh;
+  position: relative;
+  z-index: 10;
+}
+
+.calculator-screen-container {
+  position: relative;
+  z-index: 12;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding-top: 20px;
 }
 
 .calculator-screen {
   border: 1px solid white;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
   padding: 15px 36px;
-  height: 30px;
-  margin: 2px;
+  height: 40px;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30vw;
   font-size: 50px;
-  border-radius: 40px;
+  border-radius: 20px;
   background-color: #baebf4;
-  border: 5px solid #5e5a5b;
+  border: 6px solid #5e5a5b;
   color: black;
   font-family: "Orbitron", sans-serif;
   font-weight: bolder;
@@ -614,25 +585,34 @@
 
 .calculator-key-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, auto);
+  margin-top: 50px;
 }
 
 .calculator-key {
-  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 5px 0 5px;
   margin: 4px;
-  font-size: 32px;
-  height: 40px;
-  width: 40px;
+  font-size: 38px;
+  height: 7vh;
+  width: 4vw;
+  border-radius: 15px;
+  font-weight: 600;
   background-color: #65009b;
-  border: 1px solid #3e2387;
+  border: 3px solid #3e2387;
+  font-family: Arial;
+  overflow: hidden;
 }
 
-.calculator-key-img {
-  width: 50px;
+.calculator-key-box {
+  border-top: 2px solid hsla(275, 61%, 94%, 0.25);
+  border-bottom: 2px solid hsla(0, 0%, 0%, 0.2);
+  width: 4vw;
+  height: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .calculator-actions-key-container {
@@ -650,20 +630,33 @@
 .calculator-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-action-key-box {
+  border-top: 3px solid hsla(275, 61%, 94%, 0.6);
+  border-bottom: 3px solid hsla(0, 0%, 0%, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 5px;
 }
 
 .calculator-action-key {
-  border: 3px solid #3e2387;
+  border: 4px solid #3e2387;
   display: flex;
   justify-content: center;
-  border-radius: 8px;
+  border-radius: 15px;
   align-items: center;
-  margin: 4px;
-  padding: 0px 10px;
+  margin: 15px 10px;
+  padding: 0px 5px;
   cursor: pointer;
   font-size: 30px;
+  font-weight: bold;
   color: white;
   font-family: "helvetica";
+  overflow: hidden;
 }
 
 .cak-valider {
