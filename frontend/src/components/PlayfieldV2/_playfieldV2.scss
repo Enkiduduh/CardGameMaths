@@ -1,11 +1,16 @@
 .playfield-container {
-  width: 99vw;
-  height: 99vh;
-  // border: 1px solid white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+  //   width: 99vw;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   flex-direction: column;
+  height: 96vh;
+}
+//////
+.playfield-central-container {
+  width: 100%;
+  height: 48vh;
+  border: 1px solid red;
 }
 
 //TOP
@@ -15,31 +20,24 @@
   background-color: red;
 }
 
-/////CENTRAL...
-// .playfield-central-container {
-//   display: flex;
-//   justify-content: center;
-// }
-
 .playfield-central-area-container {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 5px solid #662808;
-  width: 50%;
-  height: 49vh;
+  width: 40%;
+  height: 46vh;
   background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
   background-repeat: no-repeat;
-  background-size: 47vw 49vh;
+  background-size: 100% 100%;
   background-position: center;
   z-index: 5;
   position: relative;
 }
 .playfield-central-area {
-  width: 10vw;
-  height: 10vh;
-  padding: 20px;
-  margin: 0 3vw;
+  width: 11vw;
+  height: 8vh;
+  padding: 15px 0;
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -50,11 +48,24 @@
 .playfield-central-area-chrono {
   position: absolute;
   z-index: 5;
-  top: 0;
+  top: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 10vw;
+  width: 8vw;
+  height: 80px;
+  border: 7px solid #662808;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #68ccea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.playfield-central-area-chrono-img {
+ width: 70px;
+}
+
 .pca-left {
   border: 7px solid #f2345b;
   color: #f2345b;
@@ -65,19 +76,37 @@
 }
 
 .pca-number {
-  font-size: 60px;
+  font-size: 66px;
   font-weight: bolder;
 }
 .pca-actionV2 {
-  font-size: 100px;
- }
+  width: 60px;
+  height: 60px;
+  margin: 0 20px;
+}
 
 ////// Player
 ///
 ///
+///
+.playfield-character-portrait-name {
+  width: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  background-image: url("../../../public/assets/PLAQUE-NOM-PERSONNAGE.png");
+  background-position: center;
+  // background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
 .playfield-character-portrait {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   margin-top: 10px;
 }
 
@@ -89,8 +118,8 @@
 
 .playfield-character-container {
   width: 25%;
-  height: 44vh;
-  padding: 20px;
+  height: 46vh;
+  padding: 2px 22px;
   border: 5px solid #662808;
   display: flex;
   justify-content: center;
@@ -98,35 +127,33 @@
   align-items: center;
   background-color: darkgoldenrod;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .pcc-player {
   background-image: url("../../../public/assets/BLOC-HERO.png");
-    background-position: left;
-
+  background-position: left;
 }
 .pcc-foe {
   background-image: url("../../../public/assets/BLOC-BOSS.png");
-    background-position: right;
-
+  background-position: right;
 }
 
 .playfield-character-life-container {
   border: 4px solid #a09f9f;
   width: 14vw;
-  height: 20px;
+  height: 14px;
   border-radius: 20px;
   background-color: #d6d8d6;
   display: flex;
   justify-content: left;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 4px;
 }
 
 .playfield-character-life {
-  height: 20px;
+  height: 14px;
   border-radius: 20px;
-  background-color: #53f453;
+  background-color: #53f45398;
   display: flex;
   align-items: center;
   color: black;
@@ -156,17 +183,24 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  // height: 50vh;
+  height: 48vh;
+  border: 1px solid red;
 }
 
 .shop-container,
 .deck-container {
-  height: 43vh;
   width: 25%;
-  padding: 20px;
+  height: 46vh;
+  padding: 0px 22px;
   background-repeat: no-repeat;
   background-size: cover;
   border: 5px solid #662808;
+  // outline: 1px solid #662808;
+  // outline-offset: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: 100% 100%;
 }
 
 .shop-container {
@@ -176,6 +210,11 @@
 .deck-container {
   background-image: url("../../../public/assets/BLOC-STOCKAGE-BONUS.png");
   background-position: right;
+}
+
+.shop-container-img {
+  width: 200px;
+  height: 200px;
 }
 
 .shop-container-open {
@@ -215,12 +254,14 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
-//////
-.playfield-central-container {
-  width: 99vw;
-  height: 49vh;
-}
 .playfield-central-items-container {
   display: flex;
   flex-wrap: wrap;
+  height: 210px;
+  width: 215px;
+  object-fit: cover;
+  background-image: url("../../../public/assets/STOCKAGE-BONUS.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }

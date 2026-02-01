@@ -42,6 +42,8 @@ function Calculator({ onGuessSubmit }) {
 
   return (
     <div className="calculator-container-ext">
+      <div className="calculator-backscreen"></div>
+      <div className="calculator-backscreen2"></div>
       <div className="calculator-screen-container">
         <div className="calculator-screen">{screen}</div>
       </div>

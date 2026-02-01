@@ -6,7 +6,33 @@ import Calculator from "../Calculator/Calculator";
 import Effet from "../Effet/Effet";
 import Portrait_player from "../../../public/assets/PORTRAIT-OSCAR.png";
 import Portrait_boss from "../../../public/assets/PORTRAIT-MULTIPLIGATOR.png";
-import Chrono_img from "../../../public/assets/BLOC-CHRONO.png";
+import PlaqueNom from "../../../public/assets/PLAQUE-NOM-PERSONNAGE.png";
+import Chrono_img from "../../../public/assets/HORLOGE-3.png";
+import Coffre from "../../../public/assets/COFFRE.png";
+
+import ImgDegat from "../../../public/assets/BONUS-DEGATS.png";
+import ImgBouclier from "../../../public/assets/BONUS-PROTECTION.png";
+import ImgSoin from "../../../public/assets/BONUS-SOIN.png";
+import ImgSpecial from "../../../public/assets/BONUS-SPECIAL.png";
+
+import symbAddition from "../../../public/assets/ADDITION.png";
+import symbSoustraction from "../../../public/assets/SOUSTRACTION.png";
+import symbMultiplication from "../../../public/assets/MULTIPLICATION.png";
+import symbDivision from "../../../public/assets/DIVISION.png";
+
+import time0 from "../../../public/assets/HORLOGE-0.png";
+import time1 from "../../../public/assets/HORLOGE-1.png";
+import time2 from "../../../public/assets/HORLOGE-2.png";
+import time3 from "../../../public/assets/HORLOGE-3.png";
+import time4 from "../../../public/assets/HORLOGE-4.png";
+import time5 from "../../../public/assets/HORLOGE-5.png";
+import time6 from "../../../public/assets/HORLOGE-6.png";
+import time7 from "../../../public/assets/HORLOGE-7.png";
+import time8 from "../../../public/assets/HORLOGE-8.png";
+import time9 from "../../../public/assets/HORLOGE-9.png";
+import time10 from "../../../public/assets/HORLOGE-10.png";
+import time11 from "../../../public/assets/HORLOGE-11.png";
+import time12 from "../../../public/assets/HORLOGE-12.png";
 
 function Playfield() {
   const [dataCards, setDataCards] = useState([]);
@@ -27,10 +53,29 @@ function Playfield() {
   const [rightNb, setRightNb] = useState(0);
   const [leftNb, setLeftNb] = useState(0);
   const [symbol, setSymbol] = useState("");
-  // const [mathSymbol, setMathSymbol] = useState("");
+  const [mathSymbol, setMathSymbol] = useState("");
   const [isAttributeDropped, setIsAttributeDropped] = useState(false);
   const symbolArr = ["+", "-", "x", "÷"];
   const [newRound, setNewRound] = useState(true);
+
+  // TIMER
+  const [timerImg, setTimerImg] = useState([
+    time0,
+    time1,
+    time2,
+    time3,
+    time4,
+    time5,
+    time6,
+    time7,
+    time8,
+    time9,
+    time10,
+    time11,
+    time12,
+  ]);
+  const [chronoImg, setChronoImg] = useState(time12);
+  const [startTime, setStartTime] = useState(null);
 
   // PLAYER STATS
   const [playerPoints, setPlayerPoints] = useState(0);
@@ -42,17 +87,49 @@ function Playfield() {
   });
   const [newRoundEffect, setNewRoundEffect] = useState(true);
   const [playerEffects, setPlayerEffects] = useState([
-    { id: 1, name: "Dégat +10", state: "Prêt", damage: 10, used: false },
-    { id: 2, name: "Dégat +20", state: "Prêt", damage: 20, used: false },
-    { id: 3, name: "Dégat +30", state: "Prêt", damage: 30, used: false },
-    { id: 4, name: "Dégat +30", state: "Prêt", damage: 30, used: false },
+    {
+      id: 1,
+      name: "Dégat +10",
+      state: "Prêt",
+      damage: 10,
+      used: false,
+      img: ImgDegat,
+    },
+    {
+      id: 2,
+      name: "Dégat +20",
+      state: "Prêt",
+      damage: 20,
+      used: false,
+      img: ImgDegat,
+    },
   ]);
 
   const [shopEffects, setShopEffects] = useState([
-    { id: 5, name: "Dégat +40", state: "Prêt", damage: 40, used: false },
-    { id: 6, name: "Soin +15", state: "Prêt", heal: 15, used: false },
-    { id: 7, name: "Bouclier", state: "Prêt", protection: true, used: false },
-    { id: 8, name: "Bouclier", state: "Prêt", protection: true, used: false },
+    {
+      id: 3,
+      name: "Dégat +30",
+      state: "Prêt",
+      damage: 30,
+      used: false,
+      img: ImgDegat,
+    },
+    {
+      id: 4,
+      name: "Soin +15",
+      state: "Prêt",
+      heal: 15,
+      used: false,
+      img: ImgSoin,
+    },
+    {
+      id: 5,
+      name: "Bouclier",
+      state: "Prêt",
+      protection: true,
+      used: false,
+      img: ImgBouclier,
+    },
   ]);
 
   //Fonction pour transférer un effet du shop au joueur
@@ -102,6 +179,8 @@ function Playfield() {
       setSymbol(symbolArr[rand]);
       console.log(`Symbol is: ${symbol}`);
       console.log(symbolArr[rand]);
+      setStartTime(Date.now());
+      setChronoImg(time12);
       if (symbol != "") {
         setIsAttributeDropped(true);
       }
@@ -109,8 +188,22 @@ function Playfield() {
   }, [symbol, newRound]);
 
   useEffect(() => {
+    if (symbol == symbolArr[0]) {
+      setMathSymbol(symbAddition);
+    }
+    if (symbol == symbolArr[1]) {
+      setMathSymbol(symbSoustraction);
+    }
+    if (symbol == symbolArr[2]) {
+      setMathSymbol(symbMultiplication);
+    }
+    if (symbol == symbolArr[3]) {
+      setMathSymbol(symbDivision);
+    }
+  }, [symbol, symbolArr]);
+
+  useEffect(() => {
     if (isAttributeDropped) {
-      console.log("TESSSSSSST");
       if (symbol === "-") {
         const randomNbLeft = Math.floor(Math.random() * 50);
         const randomNbRight = Math.floor(Math.random() * 50);
@@ -153,31 +246,6 @@ function Playfield() {
     setNewDataItem(dataCards.filter((item) => item.attribute === "n"));
     console.log(newDataItem);
   }, [dataCards]);
-
-  useEffect(() => {
-    if (dataCards.length > 0) {
-      const newDeck = dataCards
-        .slice(0, 15)
-        .filter((card) => card.attribute !== "n");
-      const finalDeck = [...newDeck];
-      const shuffledDeck = shuffle(finalDeck);
-      console.log("Final shuffled deck:", shuffledDeck);
-      const newHand = shuffledDeck.slice(0, 5);
-      setDeck(shuffledDeck.slice(5, 35));
-      setHand(newHand);
-      setStartGame(false); // Éviter que ça se répète
-    }
-  }, [dataCards, startGame]);
-
-  useEffect(() => {
-    if (isDeckEmpty && deck.length > 0 && hand.length < 8) {
-      setHand(...[hand], hand.push(deck[0]));
-      console.log(hand);
-      console.log(deck);
-      setDeck(...[deck], deck.shift(deck));
-      setIsDeckEmpty(false);
-    }
-  });
 
   const calculateTurnToOpenShop = (n) => {
     let nbTourOuverture = 0;
@@ -224,10 +292,6 @@ function Playfield() {
     return nbTourOuverture;
   };
 
-  const addCardDeck = () => {
-    setIsDeckEmpty(true);
-  };
-
   const handlePlayerGuess = (guess) => {
     setPlayerGuess(guess);
     console.log("Player guess:", guess);
@@ -265,6 +329,38 @@ function Playfield() {
     }
   };
 
+  // Timer avec useEffect et setInterval
+  useEffect(() => {
+    if (!startTime) return;
+
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const secondsRemaining = Math.max(0, 60 - Math.floor(elapsed / 1000));
+
+      if (secondsRemaining >= 55) setChronoImg(time12);
+      else if (secondsRemaining >= 50) setChronoImg(time11);
+      else if (secondsRemaining >= 45) setChronoImg(time10);
+      else if (secondsRemaining >= 40) setChronoImg(time9);
+      else if (secondsRemaining >= 35) setChronoImg(time8);
+      else if (secondsRemaining >= 30) setChronoImg(time7);
+      else if (secondsRemaining >= 25) setChronoImg(time6);
+      else if (secondsRemaining >= 20) setChronoImg(time5);
+      else if (secondsRemaining >= 15) setChronoImg(time4);
+      else if (secondsRemaining >= 10) setChronoImg(time3);
+      else if (secondsRemaining >= 5) setChronoImg(time2);
+      else if (secondsRemaining >= 1) setChronoImg(time1);
+      else setChronoImg(time0);
+
+      if (secondsRemaining === 0) {
+        // Temps écoulé, forcer une réponse incorrecte
+        handlePlayerGuess(-999); // Valeur impossible
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [startTime]);
+
+
   useEffect(() => {
     console.log("isAttributeDropped changed to:", isAttributeDropped);
   }, [isAttributeDropped]);
@@ -274,9 +370,10 @@ function Playfield() {
 
   return (
     <div className="playfield-container">
-      <div className="playfield-central-container">
+      <section className="playfield-central-container">
         {/* Player 1 */}
         <div className="playfield-character-container pcc-player">
+          <div className="playfield-character-portrait-name">Oscar</div>
           <div className="playfield-character-portrait">
             <img
               src={Portrait_player}
@@ -290,13 +387,17 @@ function Playfield() {
               style={{ width: `${lifePlayer}%` }}
             ></div>
           </div>
-          <div class="playfield-character-life-count">
+          <div className="playfield-character-life-count">
             {lifePlayer} / 100 PV
           </div>
         </div>
         <div className="playfield-central-area-container">
-          <div>
-            <img src={Chrono_img} alt="" class="playfield-central-area-chrono"/>
+          <div className="playfield-central-area-chrono">
+            <img
+              src={chronoImg}
+              alt=""
+              className="playfield-central-area-chrono-img"
+            />
           </div>
           {isAttributeDropped ? (
             <div className="playfield-central-area pca-number pca-left">
@@ -305,7 +406,7 @@ function Playfield() {
           ) : (
             <div className="playfield-central-area pca-number"></div>
           )}
-          <div className="pca-actionV2">{symbol}</div>
+          <img className="pca-actionV2" src={mathSymbol} alt="" />
           {isAttributeDropped ? (
             <div className="playfield-central-area pca-number pca-right">
               {rightNb}
@@ -316,6 +417,7 @@ function Playfield() {
         </div>
 
         <div className="playfield-character-container pcc-foe">
+          <div className="playfield-character-portrait-name">Multipligator</div>
           <div className="playfield-character-portrait">
             <img
               src={Portrait_boss}
@@ -329,11 +431,11 @@ function Playfield() {
               style={{ width: `${lifeBoss}%` }}
             ></div>
           </div>
-          <div class="playfield-character-life-count">
+          <div className="playfield-character-life-count">
             {lifePlayer} / 100 PV
           </div>
         </div>
-      </div>
+      </section>
       {/* <div>
         {leftNb} {symbol} {rightNb} = {calculateResult()} [Tour de jeu :{" "}
         {playerTurns}]
@@ -342,7 +444,8 @@ function Playfield() {
       <section className="playfield-bottom">
         {playerCanBuy ? (
           <div className="shop-container">
-            <div>Boutique ouverte</div>
+            <img className="shop-container-img" src={Coffre} alt="" />
+            {/* <div>Boutique ouverte</div> */}
           </div>
         ) : null}
 
@@ -354,6 +457,7 @@ function Playfield() {
                 <Effet
                   key={effect.id}
                   effectName={effect.name}
+                  effectImg={effect.img}
                   onClick={() => buyEffect(effect.id)}
                   isShopOpened={playerCanBuy}
                 />
@@ -363,10 +467,14 @@ function Playfield() {
         ) : (
           <div className="shop-container">
             {playerTurns == 0 ? (
-              <div>Ouverture dans 3 tours</div>
+              <div>
+                {/* <span>Ouverture dans 3 tours</span> */}
+                <img className="shop-container-img" src={Coffre} alt="" />
+              </div>
             ) : (
               <div>
-                Ouverture dans {calculateTurnToOpenShop(playerTurns)} tours
+                {/* Ouverture dans {calculateTurnToOpenShop(playerTurns)} tours */}
+                <img className="shop-container-img" src={Coffre} alt="" />
               </div>
             )}
             {/* <div>Ouverture au tour 3, 6 et 9.</div> */}
@@ -380,6 +488,7 @@ function Playfield() {
               <Effet
                 key={effect.id}
                 effectName={effect.name}
+                effectImg={effect.img}
                 effectState={effect.used ? "Utilisé" : effect.state}
                 isDisabled={effect.used}
                 onClick={() => activateEffect(effect.id)}

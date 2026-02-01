@@ -1,5 +1,4 @@
 .effet-item {
-  border: 3px solid white;
   width: 80px;
   height: 80px;
   font-size: 18px;
@@ -8,6 +7,8 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border-radius: 50px;
+  overflow: hidden;
 }
 .effet-item-name {
   width: 80px;
@@ -17,6 +18,7 @@
   justify-content: center;
   align-items: center;
   background-color: darkorchid;
+  display: none;
 }
 
 .effet-item-effect {
@@ -27,5 +29,11 @@
   justify-content: center;
   align-items: center;
   background-color: darkgray;
+    display: none;
 
+}
+
+.effet-item-img {
+  width: 70px;
+  height: 70px;
 }
