@@ -14,7 +14,7 @@ function App() {
       {/* <Header /> */}
       <Router>
         <Routes>
-          <Route path="/menu" element={<Menu />} />
+          <Route path="/" element={<Menu />} />
           <Route path="/gameduelV2" element={<GameduelV2 />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
