@@ -141,6 +141,8 @@ function Playfield() {
     }
   };
 
+  
+
   // Fonction pour activer un effet
   const activateEffect = (effectId) => {
     const effect = playerEffects.find((e) => e.id === effectId);
