@@ -1,16 +1,17 @@
 .playfield-container {
-  //   width: 99vw;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   flex-direction: column;
-  height: 96vh;
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 97vh;
 }
 //////
 .playfield-central-container {
   width: 100%;
   height: 48vh;
   border: 1px solid red;
+  display: flex;
 }
 
 //TOP
@@ -25,8 +26,7 @@
   justify-content: center;
   align-items: center;
   border: 5px solid #662808;
-  width: 40%;
-  height: 46vh;
+  width: 50%;
   background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -63,7 +63,7 @@
 }
 
 .playfield-central-area-chrono-img {
- width: 70px;
+  width: 70px;
 }
 
 .pca-left {
@@ -105,8 +105,8 @@
   font-weight: bold;
 }
 .playfield-character-portrait {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   margin-top: 10px;
 }
 

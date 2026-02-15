@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { shuffle } from "../../logic/shuffle";
-import CardDisplay from "../../pages/CardDisplay/CardDisplay";
-import Card from "../Card/Card";
 import Calculator from "../Calculator/Calculator";
 import Effet from "../Effet/Effet";
 import Portrait_player from "../../../public/assets/PORTRAIT-OSCAR.png";
@@ -224,29 +222,6 @@ function Playfield() {
     }
   }, [isAttributeDropped, newRound]);
 
-  useEffect(() => {
-    fetch("/api/cards/deckready")
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setDataCards(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
-
-  useEffect(() => {
-    setNewDataItem(dataCards.filter((item) => item.attribute === "n"));
-    console.log(newDataItem);
-  }, [dataCards]);
-
   const calculateTurnToOpenShop = (n) => {
     let nbTourOuverture = 0;
     switch (n) {
@@ -337,19 +312,19 @@ function Playfield() {
       const elapsed = Date.now() - startTime;
       const secondsRemaining = Math.max(0, 60 - Math.floor(elapsed / 1000));
 
-      if (secondsRemaining >= 55) setChronoImg(time12);
-      else if (secondsRemaining >= 50) setChronoImg(time11);
-      else if (secondsRemaining >= 45) setChronoImg(time10);
-      else if (secondsRemaining >= 40) setChronoImg(time9);
-      else if (secondsRemaining >= 35) setChronoImg(time8);
-      else if (secondsRemaining >= 30) setChronoImg(time7);
+      if (secondsRemaining >= 55) setChronoImg(time0);
+      else if (secondsRemaining >= 50) setChronoImg(time1);
+      else if (secondsRemaining >= 45) setChronoImg(time2);
+      else if (secondsRemaining >= 40) setChronoImg(time3);
+      else if (secondsRemaining >= 35) setChronoImg(time4);
+      else if (secondsRemaining >= 30) setChronoImg(time5);
       else if (secondsRemaining >= 25) setChronoImg(time6);
-      else if (secondsRemaining >= 20) setChronoImg(time5);
-      else if (secondsRemaining >= 15) setChronoImg(time4);
-      else if (secondsRemaining >= 10) setChronoImg(time3);
-      else if (secondsRemaining >= 5) setChronoImg(time2);
-      else if (secondsRemaining >= 1) setChronoImg(time1);
-      else setChronoImg(time0);
+      else if (secondsRemaining >= 20) setChronoImg(time7);
+      else if (secondsRemaining >= 15) setChronoImg(time8);
+      else if (secondsRemaining >= 10) setChronoImg(time9);
+      else if (secondsRemaining >= 5) setChronoImg(time10);
+      else if (secondsRemaining >= 1) setChronoImg(time11);
+      else setChronoImg(time12);
 
       if (secondsRemaining === 0) {
         // Temps écoulé, forcer une réponse incorrecte
@@ -365,8 +340,8 @@ function Playfield() {
     console.log("isAttributeDropped changed to:", isAttributeDropped);
   }, [isAttributeDropped]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="playfield-container">

@@ -3,11 +3,10 @@
   background-color: #a2e538;
   // Couleur cadre interieur
   border: 5px solid #662808;
-  width: 40%;
+  width: 50%;
   height: 46vh;
   position: relative;
   z-index: 10;
-
 }
 .calculator-backscreen {
   position: relative;
@@ -23,7 +22,7 @@
   font-size: 50px;
   border-radius: 30px;
   // Couleur intérieur
-  background-color: #a2e538;;
+  background-color: #a2e538;
   // Couleur cadre interieur
   border-top: 6px solid #662808;
   border-left: 6px solid #662808;
@@ -43,7 +42,7 @@
   width: 80%;
   font-size: 50px;
   // Couleur intérieur
-  background-color: #a2e538;;
+  background-color: #a2e538;
 }
 
 .calculator-screen-container {
@@ -100,6 +99,10 @@
   border: 3px solid #3e2387;
   font-family: Arial;
   overflow: hidden;
+  &:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+  }
 }
 
 .calculator-key-box {
@@ -153,6 +156,9 @@
   color: white;
   font-family: "helvetica";
   overflow: hidden;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+  }
 }
 
 .cak-valider {

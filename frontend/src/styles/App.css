@@ -1,116 +1,3 @@
-.cardslist-card-container {
-  display: flex;
-  align-items: center;
-  background: black;
-  border-radius: 15px;
-}
-
-.cardslist-card {
-  display: flex;
-  flex-direction: column;
-  width: 180px;
-  height: 270px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  z-index: 1;
-  border: 3px solid magenta;
-  border-radius: 15px;
-}
-
-.cardslist-card-line {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 350px;
-  padding: 10px 5px;
-  margin: 2px 0;
-  position: absolute;
-  z-index: 5;
-  color: blue;
-}
-
-.cardslist-card-element {
-  position: absolute;
-  z-index: 10;
-  color: red;
-}
-
-.element-name {
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bolder;
-}
-
-.element-type {
-  bottom: 8px;
-  font-size: 10px;
-  left: 20px;
-  font-weight: bolder;
-}
-
-.element-attribute {
-  top: 105px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 60px;
-}
-
-.element-rule {
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140px;
-  font-size: 9px;
-}
-
-.element-collection {
-  bottom: 8px;
-  font-size: 10px;
-  right: 15px;
-}
-
-.element-boost {
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 32px;
-}
-
-.element-id {
-  bottom: 8px;
-  font-size: 10px;
-  right: 85px;
-}
-
-.element-multiplicator {
-  top: 12px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid black;
-  border-radius: 50%;
-  font-weight: bolder;
-  font-size: 24px;
-}
-
-.cardslist-card-img {
-  height: 500px;
-}
-
-.gameduel-container {
-  width: 99vw;
-  height: 99vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .dice-container {
   width: 50px;
   height: 50px;
@@ -122,180 +9,18 @@
 
 .playfield-container {
   width: 90vw;
-  height: 95vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-}
-
-.playfield-adversary-container {
-  width: 80vw;
-  height: 30vh;
-  border: 1px solid white;
-  display: flex;
-}
-
-.playfield-adversary {
-  border: 1px solid white;
-  height: 30vh;
-}
-
-.adversary-area {
-  border: 1px solid white;
-  width: 60vw;
-}
-
-.adversary-deck {
-  border: 1px solid white;
-  width: 20vw;
-}
-
-.playfield-player-container {
-  width: 90vw;
-  height: 30vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-.playfield-player {
-  height: 30vh;
-}
-
-.player-area {
-  width: 80vw;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  bottom: -80px;
-}
-
-.pca-action {
-  background-image: url("../../../public/symbols.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.playfield-player-decks-container {
-  display: flex;
-  justify-content: right;
-  flex-direction: column;
-  align-items: center;
-}
-
-.playfield-player-objet-deck,
-.playfield-player-objet-wastepile {
-  border: 3px solid white;
-  font-size: 24px;
-  width: 100px;
-  height: 130px;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0 2px;
-}
-
-.playfield-central-container {
-  width: 80vw;
-  height: 30vh;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.playfield-central-area {
-  width: 180px;
-  height: 270px;
-  padding: 20px;
-  border: 7px solid white;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: darkgoldenrod;
-}
-
-.pca-number {
-  font-size: 120px;
-  font-weight: bolder;
-}
-
-.playfield-player-card {
-  position: absolute;
-  transition: all 0.5s ease;
-  z-index: 5;
-}
-.playfield-player-card:hover {
-  bottom: 250px;
-  transform: rotate(0deg) translateX(-50%);
-}
-
-.ppc-0 {
-  left: 20%;
-  transform: translateX(-50%) rotate(-20deg);
-  z-index: 6;
-  bottom: 0px;
-}
-
-.ppc-1 {
-  left: 30%;
-  transform: translateX(-50%) rotate(-20deg);
-  z-index: 7;
-  bottom: 10px;
-}
-
-.ppc-2 {
-  left: 40%;
-  transform: translateX(-50%) rotate(-15deg);
-  z-index: 8;
-  bottom: 20px;
-}
-
-.ppc-3 {
-  left: 50%;
-  transform: translateX(-50%) rotate(-10deg);
-  z-index: 9;
-  bottom: 30px;
-}
-
-.ppc-4 {
-  left: 60%;
-  transform: translateX(-50%) rotate(0deg);
-  z-index: 10;
-  bottom: 30px;
-}
-
-.ppc-5 {
-  left: 70%;
-  transform: translateX(-50%) rotate(10deg);
-  z-index: 11;
-  bottom: 20px;
-}
-
-.ppc-6 {
-  left: 80%;
-  transform: translateX(-50%) rotate(15deg);
-  z-index: 12;
-  bottom: 10px;
-}
-
-.ppc-7 {
-  left: 90%;
-  transform: translateX(-50%) rotate(15deg);
-  z-index: 13;
-  bottom: 0px;
-}
-
-.playfield-container {
-  height: 96vh;
+  height: 97vh;
 }
 
 .playfield-central-container {
   width: 100%;
   height: 48vh;
   border: 1px solid red;
+  display: flex;
 }
 
 .playfield-top-container {
@@ -309,8 +34,7 @@
   justify-content: center;
   align-items: center;
   border: 5px solid #662808;
-  width: 40%;
-  height: 46vh;
+  width: 50%;
   background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -388,8 +112,8 @@
 }
 
 .playfield-character-portrait {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   margin-top: 10px;
 }
 
@@ -550,40 +274,10 @@
   background-position: center;
 }
 
-.cardslist-container {
-  display: flex;
-}
-
-.cardslist-cards, .cardslist-cardsnumber {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 800px;
-  width: 100%;
-}
-
-.cardslist-card {
-  flex: 1 1 200px; /* largeur de base de 200px */
-  margin: 0 2px;
-}
-
-.card-container {
-  width: 180px;
-  height: 270px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 130px;
-  font-weight: bolder;
-  border: 3px solid cyan;
-  border-radius: 15px;
-  background-color: rgb(0, 0, 0);
-  margin: 0 2px;
-}
-
 .calculator-container-ext {
   background-color: #a2e538;
   border: 5px solid #662808;
-  width: 40%;
+  width: 50%;
   height: 46vh;
   position: relative;
   z-index: 10;
@@ -673,6 +367,10 @@
   font-family: Arial;
   overflow: hidden;
 }
+.calculator-key:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
 
 .calculator-key-box {
   border-top: 2px solid hsla(275, 61%, 94%, 0.25);
@@ -727,6 +425,9 @@
   font-family: "helvetica";
   overflow: hidden;
 }
+.calculator-action-key:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
+}
 
 .cak-valider {
   background-color: #13d8c0;
@@ -774,4 +475,11 @@
 .effet-item-img {
   width: 70px;
   height: 70px;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=App.css.map */
