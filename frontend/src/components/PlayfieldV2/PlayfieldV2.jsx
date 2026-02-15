@@ -7,7 +7,9 @@ import Portrait_boss from "../../../public/assets/PORTRAIT-MULTIPLIGATOR.png";
 import PlaqueNom from "../../../public/assets/PLAQUE-NOM-PERSONNAGE.png";
 import Chrono_img from "../../../public/assets/HORLOGE-3.png";
 import Coffre from "../../../public/assets/COFFRE.png";
+import CoffreFerme from "../../../public/assets/COFFRE-FERME.png";
 import Shop from "../../../public/assets/FENETRE-SELECTION-BONUS.png";
+import Sac from "../../../public/assets/STOCKAGE-BONUS.png";
 
 import ImgDegat from "../../../public/assets/BONUS-DEGATS.png";
 import ImgBouclier from "../../../public/assets/BONUS-PROTECTION.png";
@@ -380,7 +382,14 @@ function Playfield() {
         {/* Player 1 */}
         <div className="playfield-character-container ">
           <div className="playfield-character-background pcc-player"></div>
-          <div className="playfield-character-portrait-name">Oscar</div>
+          <div className="playfield-character-portrait-name-container">
+            <img
+              src={PlaqueNom}
+              alt=""
+              className="playfield-character-portrait-name-plaque"
+            />
+            <span className="playfield-character-portrait-name">Oscar</span>
+          </div>
           <div className="playfield-character-portrait">
             <img
               src={Portrait_player}
@@ -428,7 +437,16 @@ function Playfield() {
 
         <div className="playfield-character-container ">
           <div className="playfield-character-background pcc-foe"></div>
-          <div className="playfield-character-portrait-name">Multipligator</div>
+          <div className="playfield-character-portrait-name-container">
+            <img
+              src={PlaqueNom}
+              alt=""
+              className="playfield-character-portrait-name-plaque"
+            />
+            <span className="playfield-character-portrait-name">
+              Multipligator
+            </span>
+          </div>
           <div className="playfield-character-portrait">
             <img
               src={Portrait_boss}
@@ -464,19 +482,19 @@ function Playfield() {
         {playerCanBuy ? (
           <div className="shop-container-open">
             <div className="shop-container-shop-img-container">
-              <img src={Shop} alt="" className="shop-container-shop-img"/>
-            </div>
-            <div className="shop-title">Choisis un trésor à récupérer</div>
-            <div className="shop-container-effects">
-              {shopEffects.map((effect) => (
-                <Effet
-                  key={effect.id}
-                  effectName={effect.name}
-                  effectImg={effect.img}
-                  onClick={() => buyEffect(effect.id)}
-                  isShopOpened={playerCanBuy}
-                />
-              ))}
+              <img src={Shop} alt="" className="shop-container-shop-img" />
+              <div className="shop-title">Choisis un trésor à récupérer</div>
+              <div className="shop-container-effects">
+                {shopEffects.map((effect) => (
+                  <Effet
+                    key={effect.id}
+                    effectName={effect.name}
+                    effectImg={effect.img}
+                    onClick={() => buyEffect(effect.id)}
+                    isShopOpened={playerCanBuy}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         ) : (
@@ -490,7 +508,7 @@ function Playfield() {
             ) : (
               <div>
                 {/* Ouverture dans {calculateTurnToOpenShop(playerTurns)} tours */}
-                <img className="shop-container-img" src={Coffre} alt="" />
+                <img className="shop-container-img" src={CoffreFerme} alt="" />
               </div>
             )}
             {/* <div>Ouverture au tour 3, 6 et 9.</div> */}
@@ -501,6 +519,9 @@ function Playfield() {
         <div className="deck-container">
           <div className="deck-container-background"></div>
           <div className="playfield-central-items-container">
+            <div className="playfield-central-items-img-container">
+              <img src={Sac} alt="" className="playfield-central-items-img" />
+            </div>
             {playerEffects.map((effect) => (
               <Effet
                 key={effect.id}

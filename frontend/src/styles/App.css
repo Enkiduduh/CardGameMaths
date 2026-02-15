@@ -13,13 +13,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 97vh;
+  height: 99vh;
 }
 
 .playfield-central-container {
   width: 100%;
-  height: 48vh;
-  border: 1px solid red;
   display: flex;
 }
 
@@ -51,10 +49,10 @@
 
 .playfield-central-area-background3 {
   width: 90%;
-  height: 60%;
+  height: 70%;
   position: absolute;
   z-index: 4;
-  top: 20%;
+  top: 12%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #713925;
@@ -130,21 +128,32 @@
   position: relative;
 }
 
-.playfield-character-portrait-name {
+.playfield-character-portrait-name-container {
   width: 140px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 24px;
-  background-image: url("../../../public/assets/PLAQUE-NOM-PERSONNAGE.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   color: black;
   font-size: 18px;
   font-weight: bold;
   position: relative;
   z-index: 10;
+}
+
+.playfield-character-portrait-name-plaque {
+  position: absolute;
+  z-index: 11;
+  height: 100%;
+  width: 110%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.playfield-character-portrait-name {
+  position: absolute;
+  z-index: 12;
+  font-weight: bolder;
 }
 
 .playfield-character-portrait {
@@ -203,7 +212,7 @@
 
 .playfield-character-life-container {
   border: 4px solid #a09f9f;
-  width: 14vw;
+  width: 12.5vw;
   height: 14px;
   border-radius: 20px;
   background-color: #d6d8d6;
@@ -249,8 +258,6 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 48vh;
-  border: 1px solid red;
 }
 
 .shop-container,
@@ -307,11 +314,11 @@
 }
 
 .shop-container-open {
-  width: 45vw;
-  height: 60vh;
+  width: 40vw;
+  height: 55vh;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 65%;
   transform: translateX(-50%) translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -321,19 +328,24 @@
 }
 
 .shop-title {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bolder;
-  height: 100px;
+  height: 40px;
+  padding-bottom: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid white;
-  position: relative;
+  position: absolute;
   z-index: 150;
+  top: 70px;
+  text-shadow: 1px 1px 1px whitesmoke;
 }
 
 .shop-container-effects {
+  width: 30vw;
   display: flex;
+  justify-content: space-evenly;
   transform: scale(2);
   position: absolute;
   left: 50%;
@@ -343,8 +355,8 @@
 }
 
 .shop-container-shop-img-container {
-  width: 45vw;
-  height: 60vh;
+  width: 40vw;
+  height: 55vh;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -364,40 +376,59 @@
 }
 
 .playfield-central-items-container {
-  height: 210px;
+  height: 100%;
   width: 215px;
   -o-object-fit: cover;
      object-fit: cover;
-  background-image: url("../../../public/assets/STOCKAGE-BONUS.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   position: relative;
   z-index: 10;
 }
 
+.playfield-central-items-img-container {
+  height: 210px;
+  width: 215px;
+  position: absolute;
+  z-index: 12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.playfield-central-items-img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .item-element-1 {
   position: absolute;
-  top: 18px;
-  left: 18px;
+  top: 75px;
+  left: 19px;
+  z-index: 15;
 }
 
 .item-element-2 {
   position: absolute;
-  top: 18px;
+  top: 75px;
   right: 19px;
+  z-index: 15;
 }
 
 .item-element-3 {
   position: absolute;
-  bottom: 18px;
+  bottom: 75px;
   left: 18px;
+  z-index: 15;
 }
 
 .item-element-4 {
   position: absolute;
-  bottom: 18px;
+  bottom: 75px;
   right: 19px;
+  z-index: 15;
 }
 
 .calculator-container-ext {
@@ -583,6 +614,7 @@
   cursor: pointer;
   border-radius: 50px;
   overflow: hidden;
+  margin: 0 20px;
 }
 
 .effet-item-name {
