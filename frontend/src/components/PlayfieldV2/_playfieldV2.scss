@@ -21,13 +21,47 @@
   background-color: red;
 }
 
+// #BE9281 marron clair
+// #924A2D marron intermediaire
+// #713925 marron fonce
+.playfield-central-area-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+  background-color: #be9281;
+}
+
+.playfield-central-area-background2 {
+  width: 100%;
+  height: 95%;
+  position: absolute;
+  z-index: 4;
+  bottom: 0;
+  left: 0;
+  background-color: #924a2d;
+}
+
+.playfield-central-area-background3 {
+  width: 90%;
+  height: 60%;
+  position: absolute;
+  z-index: 4;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #713925;
+}
+
 .playfield-central-area-container {
   display: flex;
   justify-content: center;
   align-items: center;
   border: 5px solid #662808;
   width: 50%;
-  background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
+  // background-image: url("../../../public/assets/BLOC-ZONE-CALCUL.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -43,11 +77,13 @@
   justify-content: center;
   align-items: center;
   background-color: #f3e2bf;
+  z-index: 10;
+  position: relative;
 }
 
 .playfield-central-area-chrono {
   position: absolute;
-  z-index: 5;
+  z-index: 10;
   top: -5px;
   left: 50%;
   transform: translateX(-50%);
@@ -83,6 +119,8 @@
   width: 60px;
   height: 60px;
   margin: 0 20px;
+  z-index: 5;
+  position: relative;
 }
 
 ////// Player
@@ -103,17 +141,23 @@
   color: black;
   font-size: 18px;
   font-weight: bold;
+  position: relative;
+  z-index: 10;
 }
 .playfield-character-portrait {
   width: 200px;
   height: 200px;
   margin-top: 10px;
+  position: relative;
+  z-index: 10;
 }
 
 .playfield-character-portrait-img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .playfield-character-container {
@@ -128,14 +172,32 @@
   background-color: darkgoldenrod;
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  position: relative;
+  z-index: 5;
+  background-color: #f2d4a4;
 }
 .pcc-player {
-  background-image: url("../../../public/assets/BLOC-HERO.png");
-  background-position: left;
+  // background-image: url("../../../public/assets/BLOC-HERO.png");
+  // background-position: left;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 15px;
 }
 .pcc-foe {
-  background-image: url("../../../public/assets/BLOC-BOSS.png");
-  background-position: right;
+  // background-image: url("../../../public/assets/BLOC-BOSS.png");
+  // background-position: right;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 15px;
+}
+
+// Gestion du bg coté player en absolute
+.playfield-character-background {
+  position: absolute;
+  z-index: 6;
+  background-color: #eab868;
+  width: 95%;
+  height: 95%;
 }
 
 .playfield-character-life-container {
@@ -148,6 +210,8 @@
   justify-content: left;
   align-items: center;
   margin-top: 4px;
+  position: relative;
+  z-index: 10;
 }
 
 .playfield-character-life {
@@ -157,11 +221,15 @@
   display: flex;
   align-items: center;
   color: black;
+  position: relative;
+  z-index: 10;
 }
 .playfield-character-life-count {
   color: black;
   font-weight: 900;
   font-family: Arial;
+  position: relative;
+  z-index: 10;
 }
 
 ///// Player
@@ -195,26 +263,49 @@
   background-repeat: no-repeat;
   background-size: cover;
   border: 5px solid #662808;
-  // outline: 1px solid #662808;
-  // outline-offset: -1px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: 100% 100%;
+  position: relative;
+  z-index: 5;
+}
+.deck-container {
+  background-color: #a4e0f2;
 }
 
 .shop-container {
-  background-image: url("../../../public/assets/BLOC-COFFRE.png");
-  background-position: left;
+  background-color: #fed866;
 }
-.deck-container {
-  background-image: url("../../../public/assets/BLOC-STOCKAGE-BONUS.png");
-  background-position: right;
+
+// Gestion du bg coté player en absolute
+.shop-container-background,
+.deck-container-background {
+  position: absolute;
+  z-index: 6;
+  width: 95%;
+  height: 95%;
+}
+
+.shop-container-background {
+  top: 0;
+  right: 0;
+  border-bottom-left-radius: 15px;
+  background-color: #fdbe00;
+}
+
+.deck-container-background {
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 15px;
+  background-color: #68ccea;
 }
 
 .shop-container-img {
   width: 200px;
   height: 200px;
+  position: relative;
+  z-index: 10;
 }
 
 .shop-container-open {
@@ -229,10 +320,6 @@
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  background-image: url("../../../public/assets/FENETRE-SELECTION-BONUS.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
 }
 .shop-title {
   font-size: 24px;
@@ -242,16 +329,39 @@
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid white;
+  position: relative;
+  z-index: 150;
 }
 
 .shop-container-effects {
   display: flex;
   transform: scale(2);
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 150;
+}
+
+.shop-container-shop-img-container {
+  width: 45vw;
+  height: 60vh;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+.shop-container-shop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
 }
 
 .playfield-central-items-container {
@@ -265,6 +375,7 @@
   background-size: cover;
   background-position: center;
   position: relative;
+  z-index: 10;
 }
 
 .item-element-1 {

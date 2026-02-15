@@ -1,0 +1,13 @@
+com/cgmaths/model/Rule.class
+com/cgmaths/dtos/CardDTO.class
+com/cgmaths/model/CardType.class
+com/cgmaths/configuration/WebMvcConfigurer.class
+com/cgmaths/model/Attribute.class
+com/cgmaths/controller/CardController.class
+com/cgmaths/CgmathsApplication.class
+com/cgmaths/model/Boost.class
+com/cgmaths/repository/CardRepository.class
+com/cgmaths/model/CardCollection.class
+com/cgmaths/model/Card.class
+com/cgmaths/configuration/WebMvcConfigurer$1.class
+com/cgmaths/service/CardService.class

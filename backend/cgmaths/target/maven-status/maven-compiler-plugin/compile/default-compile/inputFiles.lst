@@ -1,0 +1,12 @@
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/CgmathsApplication.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/configuration/WebMvcConfigurer.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/controller/CardController.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/dtos/CardDTO.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/model/Attribute.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/model/Boost.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/model/Card.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/model/CardCollection.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/model/CardType.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/model/Rule.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/repository/CardRepository.java
+/home/ilyes/code/cardgame/backend/cgmaths/src/main/java/com/cgmaths/service/CardService.java

@@ -7,6 +7,7 @@ import Portrait_boss from "../../../public/assets/PORTRAIT-MULTIPLIGATOR.png";
 import PlaqueNom from "../../../public/assets/PLAQUE-NOM-PERSONNAGE.png";
 import Chrono_img from "../../../public/assets/HORLOGE-3.png";
 import Coffre from "../../../public/assets/COFFRE.png";
+import Shop from "../../../public/assets/FENETRE-SELECTION-BONUS.png";
 
 import ImgDegat from "../../../public/assets/BONUS-DEGATS.png";
 import ImgBouclier from "../../../public/assets/BONUS-PROTECTION.png";
@@ -92,6 +93,7 @@ function Playfield() {
       damage: 10,
       used: false,
       img: ImgDegat,
+      pos: 1,
     },
     {
       id: 2,
@@ -100,9 +102,9 @@ function Playfield() {
       damage: 20,
       used: false,
       img: ImgDegat,
+      pos: 2,
     },
   ]);
-
   const [shopEffects, setShopEffects] = useState([
     {
       id: 3,
@@ -134,14 +136,41 @@ function Playfield() {
   const buyEffect = (effectId) => {
     if (playerTurns === 3 || playerTurns === 6 || playerTurns === 9) {
       const effect = shopEffects.find((e) => e.id === effectId);
-      playerEffects.push(effect);
+
+      if (!effect) {
+        console.error("Effect not found");
+        return;
+      }
+
+      // Vérifier si on peut ajouter un effet (max 4)
+      if (playerEffects.length >= 4) {
+        console.warn("Cannot add more effects (max 4)");
+        return;
+      }
+
+      // Trouver la prochaine position disponible
+      const usedPositions = playerEffects.map((e) => e.pos);
+      let nextPosition = null;
+      for (let i = 1; i <= 4; i++) {
+        if (!usedPositions.includes(i)) {
+          nextPosition = i;
+          break;
+        }
+      }
+
+      if (!nextPosition) {
+        console.warn("No available position");
+        return;
+      }
+      // Ajouter l'effet avec sa position
+      const effectWithPosition = { ...effect, pos: nextPosition };
+      setPlayerEffects((prev) => [...prev, effectWithPosition]);
+      // playerEffects.push(effect);
       setShopEffects(shopEffects.filter((e) => e.id != effectId));
       console.log("Achat");
       setPlayerCanBuy(false);
     }
   };
-
-  
 
   // Fonction pour activer un effet
   const activateEffect = (effectId) => {
@@ -151,6 +180,7 @@ function Playfield() {
         console.log("Effet déjà utilisé ou inexistant");
         return;
       }
+
       // Appliquer l'effet
       if (effect.damage) {
         setLifeBoss((prev) => Math.max(0, prev - effect.damage));
@@ -337,7 +367,6 @@ function Playfield() {
     return () => clearInterval(interval);
   }, [startTime]);
 
-
   useEffect(() => {
     console.log("isAttributeDropped changed to:", isAttributeDropped);
   }, [isAttributeDropped]);
@@ -349,7 +378,8 @@ function Playfield() {
     <div className="playfield-container">
       <section className="playfield-central-container">
         {/* Player 1 */}
-        <div className="playfield-character-container pcc-player">
+        <div className="playfield-character-container ">
+          <div className="playfield-character-background pcc-player"></div>
           <div className="playfield-character-portrait-name">Oscar</div>
           <div className="playfield-character-portrait">
             <img
@@ -369,6 +399,9 @@ function Playfield() {
           </div>
         </div>
         <div className="playfield-central-area-container">
+          <div className="playfield-central-area-background"></div>
+          <div className="playfield-central-area-background2"></div>
+          <div className="playfield-central-area-background3"></div>
           <div className="playfield-central-area-chrono">
             <img
               src={chronoImg}
@@ -393,7 +426,8 @@ function Playfield() {
           )}
         </div>
 
-        <div className="playfield-character-container pcc-foe">
+        <div className="playfield-character-container ">
+          <div className="playfield-character-background pcc-foe"></div>
           <div className="playfield-character-portrait-name">Multipligator</div>
           <div className="playfield-character-portrait">
             <img
@@ -421,6 +455,7 @@ function Playfield() {
       <section className="playfield-bottom">
         {playerCanBuy ? (
           <div className="shop-container">
+            <div className="shop-container-background"></div>
             <img className="shop-container-img" src={Coffre} alt="" />
             {/* <div>Boutique ouverte</div> */}
           </div>
@@ -428,6 +463,9 @@ function Playfield() {
 
         {playerCanBuy ? (
           <div className="shop-container-open">
+            <div className="shop-container-shop-img-container">
+              <img src={Shop} alt="" className="shop-container-shop-img"/>
+            </div>
             <div className="shop-title">Choisis un trésor à récupérer</div>
             <div className="shop-container-effects">
               {shopEffects.map((effect) => (
@@ -443,6 +481,7 @@ function Playfield() {
           </div>
         ) : (
           <div className="shop-container">
+            <div className="shop-container-background"></div>
             {playerTurns == 0 ? (
               <div>
                 {/* <span>Ouverture dans 3 tours</span> */}
@@ -460,6 +499,7 @@ function Playfield() {
 
         <Calculator onGuessSubmit={handlePlayerGuess} />
         <div className="deck-container">
+          <div className="deck-container-background"></div>
           <div className="playfield-central-items-container">
             {playerEffects.map((effect) => (
               <Effet
@@ -468,6 +508,7 @@ function Playfield() {
                 effectImg={effect.img}
                 effectState={effect.used ? "Utilisé" : effect.state}
                 isDisabled={effect.used}
+                elementNumberClass={effect.pos}
                 onClick={() => activateEffect(effect.id)}
               />
             ))}

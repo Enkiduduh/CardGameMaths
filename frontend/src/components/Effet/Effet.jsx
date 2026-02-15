@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
-function Effet({ effectName, effectState, effectImg, isDisabled, onClick, isShopOpened }) {
+function Effet({ effectName, effectState, effectImg, isDisabled, onClick, isShopOpened, elementNumberClass
+
+ }) {
   const [selected, setSelected] = useState(false);
 
   const handleClick = () => {
@@ -12,7 +14,7 @@ function Effet({ effectName, effectState, effectImg, isDisabled, onClick, isShop
 
   return (
     <div
-      className={`effet-item ${selected ? "selected" : ""} ${
+      className={`effet-item item-element-${elementNumberClass} ${selected ? "selected" : ""} ${
         isDisabled ? "disabled" : ""
       }`}
       onClick={handleClick}
